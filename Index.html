@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Offset untuk navbar fixed */
+      section[id] {
+        scroll-margin-top: 80px;
+      }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,38 +31,44 @@
 
       <!-- Mobile Menu Button dengan Animasi -->
       <div class="flex lg:hidden">
-        <button id="mobile-menu-btn" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-white hamburger bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group">
+        <button id="mobile-menu-btn" type="button" class="nav-btn -m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-white hamburger bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group hover:scale-105 hover:shadow-lg hover:shadow-[#8E0A1E]/50 active:scale-95">
           <span class="sr-only">Open main menu</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 relative z-10">
             <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </button>
       </div>
       
       <!-- Desktop Navigation dengan Animasi -->
       <div class="hidden lg:flex lg:gap-x-8 mx-auto">
-        <a href="Index.html" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
+        <a href="Index.html" class="nav-btn text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group hover:scale-105 hover:shadow-lg hover:shadow-[#8E0A1E]/50 active:scale-95">
           <span class="relative z-10">Home</span>
           <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </a>
-        <a href="#" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
+        <a href="#profil" class="nav-btn text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group hover:scale-105 hover:shadow-lg hover:shadow-[#8E0A1E]/50 active:scale-95">
           <span class="relative z-10">Profil</span>
           <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </a>
-        <a href="#" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
+        <a href="#galeri" class="nav-btn text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group hover:scale-105 hover:shadow-lg hover:shadow-[#8E0A1E]/50 active:scale-95">
           <span class="relative z-10">Galery</span>
           <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </a>
-        <a href="#" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
+        <a href="#kontak" class="nav-btn text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group hover:scale-105 hover:shadow-lg hover:shadow-[#8E0A1E]/50 active:scale-95">
           <span class="relative z-10">Contact</span>
           <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </a>
       </div>
       <div class="hidden lg:flex">
-        <a href="#kontak" class="px-8 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-[#5A0A0A] relative overflow-hidden group">
+        <a href="#kontak" class="nav-btn px-8 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#8E0A1E]/50 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 active:translate-y-0 border border-[#5A0A0A] relative overflow-hidden group">
           <span class="relative z-10">Daftar</span>
           <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </a>
       </div>
     </nav>
@@ -213,7 +228,7 @@
         <!-- Foto Asrama -->
         <div class="relative">
           <div class="relative overflow-hidden rounded-2xl shadow-2xl">
-            <img src="assets/SCprofil.JPG" 
+            <img src="assets/7.JPG" 
                  alt="Asrama Al-Kautsar" 
                  class="w-full h-[500px] object-cover transform hover:scale-105 transition-transform duration-500">
             
@@ -241,7 +256,7 @@
       <h2 class="text-3xl sm:text-4xl font-bold  mb-12 text-center">Galeri Kegiatan</h2>
       
       <!-- Masonry-like Gallery Grid -->
-      <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+      <div id="gallery-container" class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
         <!-- Image 1 - Large -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[4/3]">
@@ -297,7 +312,7 @@
         </div>
 
         <!-- Image 7 - Large Square -->
-        <div class="break-inside-avoid mb-6">
+        <div class="gallery-hidden break-inside-avoid mb-6 hidden">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
             <img src="assets/7.JPG" 
                  alt="" 
@@ -306,7 +321,7 @@
         </div>
 
         <!-- Image 8 - Portrait -->
-        <div class="break-inside-avoid mb-6">
+        <div class="gallery-hidden break-inside-avoid mb-6 hidden">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[2/3]">
             <img src="https://via.placeholder.com/300x450/f3f4f6/9ca3af?text=Lab+Komputer" 
                  alt="" 
@@ -315,8 +330,8 @@
         </div>
 
         <!-- Image 9 - Wide -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[5/3]</div          /]">
+        <div class="gallery-hidden break-inside-avoid mb-6 hidden">
+          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[5/3]">
             <img src="https://via.placeholder.com/400x267/f3f4f6/9ca3af?text=Kantin+Sekolah" 
                  alt="Kantin Sekolah" 
                  class="w-full h-full object-cover">
@@ -324,7 +339,7 @@
         </div>
 
         <!-- Image 10 - Medium -->
-        <div class="break-inside-avoid mb-6">
+        <div class="gallery-hidden break-inside-avoid mb-6 hidden">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[4/5]">
             <img src="https://via.placeholder.com/280x350/f3f4f6/9ca3af?text=Taman+Sekolah" 
                  alt="Taman Sekolah" 
@@ -333,7 +348,7 @@
         </div>
 
         <!-- Image 11 - Square -->
-        <div class="break-inside-avoid mb-6">
+        <div class="gallery-hidden break-inside-avoid mb-6 hidden">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
             <img src="https://via.placeholder.com/300x300/f3f4f6/9ca3af?text=Halaman+Sekolah" 
                  alt="Halaman Sekolah" 
@@ -342,13 +357,21 @@
         </div>
 
         <!-- Image 12 - Large Rectangle -->
-        <div class="break-inside-avoid mb-6">
+        <div class="gallery-hidden break-inside-avoid mb-6 hidden">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[5/3]">
             <img src="https://via.placeholder.com/450x270/f3f4f6/9ca3af?text=Gedung+Sekolah" 
                  alt="Gedung Sekolah" 
                  class="w-full h-full object-cover">
           </div>
         </div>
+      </div>
+      
+      <!-- Tombol Lihat Lebih Banyak -->
+      <div class="text-center mt-8">
+        <button id="show-more-gallery" class="px-8 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group border border-[#5A0A0A]">
+          <span class="relative z-10">Lihat Lebih Banyak</span>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+        </button>
       </div>
     </div>
   </section>
@@ -556,5 +579,132 @@
       
       <!-- JavaScript untuk Animasi Navbar -->
       <script src="script.js"></script>
+      
+      <!-- JavaScript untuk Efek Interaktif Navbar -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Fungsi untuk menutup menu mobile
+          function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-menu-overlay');
+            if (mobileMenu && mobileOverlay) {
+              mobileMenu.classList.add('translate-x-full');
+              mobileOverlay.classList.add('hidden');
+            }
+          }
+          
+          // Tutup menu mobile saat link navbar diklik
+          const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+          mobileNavLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+              closeMobileMenu();
+            });
+          });
+          
+          // Efek Ripple saat klik pada tombol navbar
+          const navButtons = document.querySelectorAll('.nav-btn');
+          
+          navButtons.forEach(function(button) {
+            button.addEventListener('click', function(e) {
+              // Hapus ripple sebelumnya jika ada
+              const existingRipple = this.querySelector('.ripple-effect');
+              if (existingRipple) {
+                existingRipple.remove();
+              }
+              
+              // Buat elemen ripple
+              const ripple = document.createElement('span');
+              ripple.classList.add('ripple-effect');
+              
+              // Dapatkan posisi klik relatif terhadap tombol
+              const rect = this.getBoundingClientRect();
+              const size = Math.max(rect.width, rect.height);
+              const x = e.clientX - rect.left - size / 2;
+              const y = e.clientY - rect.top - size / 2;
+              
+              // Set style ripple
+              ripple.style.width = ripple.style.height = size + 'px';
+              ripple.style.left = x + 'px';
+              ripple.style.top = y + 'px';
+              ripple.style.position = 'absolute';
+              ripple.style.borderRadius = '50%';
+              ripple.style.background = 'rgba(255, 255, 255, 0.4)';
+              ripple.style.transform = 'scale(0)';
+              ripple.style.animation = 'ripple 600ms ease-out';
+              ripple.style.pointerEvents = 'none';
+              ripple.style.zIndex = '5';
+              
+              // Tambahkan ripple ke tombol
+              this.appendChild(ripple);
+              
+              // Hapus ripple setelah animasi selesai
+              setTimeout(function() {
+                if (ripple.parentNode) {
+                  ripple.remove();
+                }
+              }, 600);
+            });
+          });
+        });
+      </script>
+      
+      <!-- CSS untuk Animasi Ripple -->
+      <style>
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+        
+        /* Efek pulse ring saat hover */
+        .nav-btn::before {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          border-radius: inherit;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          opacity: 0;
+          transform: scale(0.8);
+          transition: all 0.3s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+        
+        .nav-btn:hover::before {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      </style>
+      
+      <!-- JavaScript untuk Toggle Gallery -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const showMoreBtn = document.getElementById('show-more-gallery');
+          const hiddenImages = document.querySelectorAll('.gallery-hidden');
+          
+          if (showMoreBtn) {
+            showMoreBtn.addEventListener('click', function() {
+              const isHidden = hiddenImages[0].classList.contains('hidden');
+              
+              if (isHidden) {
+                // Tampilkan semua gambar
+                hiddenImages.forEach(function(img) {
+                  img.classList.remove('hidden');
+                });
+                showMoreBtn.querySelector('.relative.z-10').textContent = 'Lihat Lebih Sedikit';
+              } else {
+                // Sembunyikan kembali gambar
+                hiddenImages.forEach(function(img) {
+                  img.classList.add('hidden');
+                });
+                showMoreBtn.querySelector('.relative.z-10').textContent = 'Lihat Lebih Banyak';
+                // Scroll kembali ke atas galeri
+                document.getElementById('galeri').scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            });
+          }
+        });
+      </script>
 </body>
 </html>
