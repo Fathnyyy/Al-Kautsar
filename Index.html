@@ -22,35 +22,39 @@
 
       <!-- Mobile Menu Button dengan Animasi -->
       <div class="flex lg:hidden">
-        <button id="mobile-menu-btn" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200 hamburger hover:bg-blue-500/20 transition-all duration-300">
+        <button id="mobile-menu-btn" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-white hamburger bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group">
           <span class="sr-only">Open main menu</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
             <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
         </button>
       </div>
       
       <!-- Desktop Navigation dengan Animasi -->
       <div class="hidden lg:flex lg:gap-x-8 mx-auto">
-        <a href="Index.html" class="nav-link text-sm/6 font-semibold text-white px-4 py-2 rounded-lg hover:bg-blue-500/10 relative group">
+        <a href="Index.html" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
           <span class="relative z-10">Home</span>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
         </a>
-        <a href="#" class="nav-link text-sm/6 font-semibold text-white px-4 py-2 rounded-lg hover:bg-blue-500/10 relative group">
+        <a href="#" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
           <span class="relative z-10">Profil</span>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
         </a>
-        <a href="#" class="nav-link text-sm/6 font-semibold text-white px-4 py-2 rounded-lg hover:bg-blue-500/10 relative group">
+        <a href="#" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
           <span class="relative z-10">Galery</span>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
         </a>
-        <a href="#" class="nav-link text-sm/6 font-semibold text-white px-4 py-2 rounded-lg hover:bg-blue-500/10 relative group">
+        <a href="#" class="text-sm/6 font-semibold text-white px-4 py-2 rounded-full bg-[#8E0A1E] hover:bg-[#7a0e18] transition-colors duration-300 border border-[#5A0A0A] relative overflow-hidden group">
           <span class="relative z-10">Contact</span>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
         </a>
       </div>
       <div class="hidden lg:flex">
-        <a href="#kontak" class="px-4 py-2 rounded-lg font-semibold btn-gold shadow-md hover:shadow-lg">Daftar</a>
+        <a href="#kontak" class="px-8 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-[#5A0A0A] relative overflow-hidden group">
+          <span class="relative z-10">Daftar</span>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+        </a>
       </div>
     </nav>
     <!-- Mobile Menu dengan Animasi Modern -->
@@ -241,7 +245,7 @@
         <!-- Image 1 - Large -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[4/3]">
-            <img src="https://via.placeholder.com/400x300/f3f4f6/9ca3af?text=Kegiatan+Pembelajaran" 
+            <img src="assets/1.jpeg" 
                  alt="Pembelajaran" 
                  class="w-full h-full object-cover">
           </div>
@@ -250,7 +254,7 @@
         <!-- Image 2 - Medium -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
-            <img src="https://via.placeholder.com/300x300/f3f4f6/9ca3af?text=Ekstrakurikuler" 
+            <img src="assets/2.JPG" 
                  alt="" 
                  class="w-full h-full object-cover">
           </div>
@@ -259,7 +263,7 @@
         <!-- Image 3 - Tall -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[3/4]">
-            <img src="https://via.placeholder.com/250x333/f3f4f6/9ca3af?text=Kegiatan+Keagamaan" 
+            <img src="assets/3.JPG" 
                  alt="" 
                  class="w-full h-full object-cover">
           </div>
@@ -268,7 +272,7 @@
         <!-- Image 4 - Wide -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[16/9]">
-            <img src="https://via.placeholder.com/400x225/f3f4f6/9ca3af?text=Acara+Sekolah" 
+            <img src="assets/4.JPG" 
                  alt="" 
                  class="w-full h-full object-cover">
           </div>
@@ -277,7 +281,7 @@
         <!-- Image 5 - Small Square -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
-            <img src="https://via.placeholder.com/250x250/f3f4f6/9ca3af?text=Olahraga" 
+            <img src="assets/5.JPG" 
                  alt="" 
                  class="w-full h-full object-cover">
           </div>
@@ -286,7 +290,7 @@
         <!-- Image 6 - Medium Rectangle -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[5/4]">
-            <img src="https://via.placeholder.com/350x280/f3f4f6/9ca3af?text=Karya+Siswa" 
+            <img src="assets/6.JPG" 
                  alt="Karya Siswa" 
                  class="w-full h-full object-cover">
           </div>
@@ -295,7 +299,7 @@
         <!-- Image 7 - Large Square -->
         <div class="break-inside-avoid mb-6">
           <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
-            <img src="https://via.placeholder.com/350x350/f3f4f6/9ca3af?text=Perpustakaan" 
+            <img src="assets/7.JPG" 
                  alt="" 
                  class="w-full h-full object-cover">
           </div>
