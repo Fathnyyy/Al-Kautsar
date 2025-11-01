@@ -132,89 +132,65 @@
   <!-- Section Galeri Lengkap -->
   <section id="galeri" class="w-full py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4">
-      <!-- Masonry-like Gallery Grid -->
-      <div id="gallery-container" class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
-        <!-- Image 1 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[4/3]">
-            <img src="assets/1.jpeg" alt="Pembelajaran" class="w-full h-full object-cover">
+      <!-- Gallery Grid - Sama dengan Preview -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 overflow-hidden rounded-xl mb-8">
+        <!-- Kolom 1 -->
+        <div class="flex flex-col gap-2">
+          <!-- Image 1 -->
+          <div class="relative group aspect-[4/3] overflow-hidden">
+            <img src="assets/1.jpeg" alt="Pembelajaran" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+          </div>
+          <!-- Image 4 -->
+          <div class="relative group aspect-[4/3] overflow-hidden">
+            <img src="assets/4.JPG" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+          </div>
+          <!-- Image 7 -->
+          <div class="relative group aspect-[4/3] overflow-hidden">
+            <img src="assets/7.JPG" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
           </div>
         </div>
 
-        <!-- Image 2 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
-            <img src="assets/2.JPG" alt="Kegiatan" class="w-full h-full object-cover">
+        <!-- Kolom 2 -->
+        <div class="flex flex-col gap-2">
+          <!-- Image 2 (portrait) -->
+          <div class="relative group aspect-[3/4] overflow-hidden">
+            <img src="assets/5.JPG" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+          </div>
+          <!-- Image 5 (landscape) -->
+          <div class="relative group aspect-[4/3] overflow-hidden">
+            <img src="assets/2.JPG" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+          </div>
+          <!-- Image 8 (portrait) -->
+          <div class="relative group aspect-[2/3] overflow-hidden">
+            <img src="https://via.placeholder.com/300x450/f3f4f6/9ca3af?text=Lab+Komputer" alt="Lab Komputer" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+          </div>
+          <!-- Image 11 (square) -->
+          <div class="relative group aspect-square overflow-hidden">
+            <img src="https://via.placeholder.com/300x300/f3f4f6/9ca3af?text=Halaman+Sekolah" alt="Halaman Sekolah" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
           </div>
         </div>
 
-        <!-- Image 3 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[3/4]">
-            <img src="assets/3.JPG" alt="Kegiatan" class="w-full h-full object-cover">
+        <!-- Kolom 3 -->
+        <div class="flex flex-col gap-2">
+          <!-- Image 3 -->
+          <div class="relative group aspect-[4/3] overflow-hidden">
+            <img src="assets/3.JPG" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
           </div>
-        </div>
-
-        <!-- Image 4 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[16/9]">
-            <img src="assets/4.JPG" alt="Kegiatan" class="w-full h-full object-cover">
+          <!-- Image 6 -->
+          <div class="relative group aspect-[4/3] overflow-hidden">
+            <img src="assets/6.JPG" alt="Karya Siswa" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
           </div>
-        </div>
-
-        <!-- Image 5 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
-            <img src="assets/5.JPG" alt="Kegiatan" class="w-full h-full object-cover">
+          <!-- Image 9 (landscape wide) -->
+          <div class="relative group aspect-[5/3] overflow-hidden">
+            <img src="https://via.placeholder.com/400x267/f3f4f6/9ca3af?text=Kantin+Sekolah" alt="Kantin Sekolah" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
           </div>
-        </div>
-
-        <!-- Image 6 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[5/4]">
-            <img src="assets/6.JPG" alt="Karya Siswa" class="w-full h-full object-cover">
+          <!-- Image 10 (portrait) -->
+          <div class="relative group aspect-[4/5] overflow-hidden">
+            <img src="https://via.placeholder.com/280x350/f3f4f6/9ca3af?text=Taman+Sekolah" alt="Taman Sekolah" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
           </div>
-        </div>
-
-        <!-- Image 7 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
-            <img src="assets/7.JPG" alt="Kegiatan" class="w-full h-full object-cover">
-          </div>
-        </div>
-
-        <!-- Image 8 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[2/3]">
-            <img src="https://via.placeholder.com/300x450/f3f4f6/9ca3af?text=Lab+Komputer" alt="Kegiatan" class="w-full h-full object-cover">
-          </div>
-        </div>
-
-        <!-- Image 9 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[5/3]">
-            <img src="https://via.placeholder.com/400x267/f3f4f6/9ca3af?text=Kantin+Sekolah" alt="Kantin Sekolah" class="w-full h-full object-cover">
-          </div>
-        </div>
-
-        <!-- Image 10 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[4/5]">
-            <img src="https://via.placeholder.com/280x350/f3f4f6/9ca3af?text=Taman+Sekolah" alt="Taman Sekolah" class="w-full h-full object-cover">
-          </div>
-        </div>
-
-        <!-- Image 11 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-square">
-            <img src="https://via.placeholder.com/300x300/f3f4f6/9ca3af?text=Halaman+Sekolah" alt="Halaman Sekolah" class="w-full h-full object-cover">
-          </div>
-        </div>
-
-        <!-- Image 12 -->
-        <div class="break-inside-avoid mb-6">
-          <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 aspect-[5/3]">
-            <img src="https://via.placeholder.com/450x270/f3f4f6/9ca3af?text=Gedung+Sekolah" alt="Gedung Sekolah" class="w-full h-full object-cover">
+          <!-- Image 12 (landscape) -->
+          <div class="relative group aspect-[5/3] overflow-hidden">
+            <img src="https://via.placeholder.com/450x270/f3f4f6/9ca3af?text=Gedung+Sekolah" alt="Gedung Sekolah" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
           </div>
         </div>
       </div>

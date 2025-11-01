@@ -533,6 +533,29 @@ footer .social-link:hover {
     animation: float 3s ease-in-out infinite;
 }
 
+/* Logo sizing: make logo-as match an H1-like scale responsively
+   - Default: ~2rem (32px)
+   - Medium screens: ~2.5rem (40px)
+   - Large screens: ~3rem (48px)
+   Width stays auto to preserve aspect ratio.
+*/
+.logo-as {
+    height: 2rem; /* h1-like on small screens */
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    transition: height 0.35s cubic-bezier(.2,.8,.2,1);
+    object-fit: contain;
+}
+
+@media (min-width: 768px) {
+    .logo-as { height: 2.5rem; }
+}
+
+@media (min-width: 1024px) {
+    .logo-as { height: 3rem; }
+}
+
 /* Gradient Border Animation */
 @keyframes gradientBorder {
     0% {
