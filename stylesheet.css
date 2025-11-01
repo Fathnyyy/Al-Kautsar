@@ -540,7 +540,7 @@ footer .social-link:hover {
    Width stays auto to preserve aspect ratio.
 */
 .logo-as {
-    height: 2rem; /* h1-like on small screens */
+    height: 6rem; /* ~96px default */
     width: auto;
     display: inline-block;
     vertical-align: middle;
@@ -549,11 +549,11 @@ footer .social-link:hover {
 }
 
 @media (min-width: 768px) {
-    .logo-as { height: 2.5rem; }
+    .logo-as { height: 8rem; } /* ~128px on medium screens */
 }
 
 @media (min-width: 1024px) {
-    .logo-as { height: 3rem; }
+    .logo-as { height: 10rem; } /* ~160px on large screens */
 }
 
 /* Gradient Border Animation */
@@ -644,6 +644,5 @@ footer .social-link:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #e6c200;
-      }
-      
-      
+}
+
