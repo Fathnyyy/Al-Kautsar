@@ -446,8 +446,8 @@ body {
 /* Decorative element for navbar left */
 .nav-deco {
     position: relative;
-    width: 140px;
-    height: 36px;
+    width: 125px;
+    height: 32px;
 }
 .nav-deco::before,
 .nav-deco::after {
