@@ -190,6 +190,18 @@
     </div>
   </div>
 
+  <script>
+  // Shuffle otomatis urutan gambar
+  const galleryColumns = document.querySelectorAll(".grid > div");
+
+  galleryColumns.forEach(column => {
+    const items = Array.from(column.children);
+    const shuffled = items.sort(() => Math.random() - 0.5);
+    shuffled.forEach(item => column.appendChild(item));
+  });
+</script>
+
+
   <!-- Lightbox / Popup Foto -->
   <div id="lightbox" class="fixed inset-0 bg-black/80 hidden justify-center items-center z-50 p-4" onclick="closeLightbox()">
     <img id="lightbox-img" src="" alt="Preview Foto" class="max-w-4xl w-auto max-h-[90vh] rounded-lg shadow-lg">

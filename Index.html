@@ -311,6 +311,18 @@
   </div>
 </div>
 
+<script>
+  // Shuffle otomatis urutan gambar
+  const galleryColumns = document.querySelectorAll(".grid > div");
+
+  galleryColumns.forEach(column => {
+    const items = Array.from(column.children);
+    const shuffled = items.sort(() => Math.random() - 0.5);
+    shuffled.forEach(item => column.appendChild(item));
+  });
+</script>
+
+
       <!-- Tombol ke Halaman Galeri Lengkap -->
       <div class="text-center">
         <a href="Gallery.html" class="inline-block px-8 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#8E0A1E]/50 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 border border-[#5A0A0A] relative overflow-hidden group">
