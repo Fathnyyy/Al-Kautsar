@@ -15,27 +15,26 @@
       :root {
         --bg: #260c0c; /* dark maroon */
         --bg-soft: #3a0f0f; /* softer maroon */
-        --glass: rgba(255, 255, 255, 0.06);
+        --glass: rgba(255, 255, 255, 0.04);
         --text: #e5e7eb;
         --muted: #9ca3af;
         --brand: #b91c1c; /* maroon */
         --brand-2: #7f1d1d; /* deep maroon */
-        --card: rgba(255, 255, 255, 0.08);
-        --border: rgba(255, 255, 255, 0.12);
-        --shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
-        --radius: 16px;
+        --card: rgba(255, 255, 255, 0.05);
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        --radius: 12px;
       }
 
       * { box-sizing: border-box; }
       html, body { height: 100%; }
       body {
         margin: 0;
-        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
         color: var(--text);
-        background: radial-gradient(1200px 800px at 85% -10%, rgba(185,28,28,.22), transparent 60%),
-                    radial-gradient(900px 700px at -10% 20%, rgba(127,29,29,.18), transparent 55%),
-                    linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+        background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
         background-attachment: fixed;
+        line-height: 1.6;
       }
 
       .noise {
@@ -52,74 +51,94 @@
       .grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 22px;
+        gap: 24px;
       }
       @media (min-width: 860px) {
         .grid { grid-template-columns: 1.2fr 2fr; align-items: start; }
       }
 
       .card {
-        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+        background: var(--card);
         border: 1px solid var(--border);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
       }
-      .profile-card { padding: 28px; position: sticky; top: 84px; }
+      .profile-card { padding: 32px; position: sticky; top: 84px; }
       .avatar {
-        width: 120px; height: 120px; border-radius: 20px; overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.18);
-        box-shadow: 0 20px 50px rgba(2,6,23,0.6), inset 0 0 20px rgba(255,255,255,0.08);
+        width: 100px; height: 100px; border-radius: 12px; overflow: hidden;
+        border: 1px solid var(--border);
       }
       .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .stacked { display: flex; align-items: center; gap: 18px; }
-      .name { font-size: 26px; font-weight: 800; margin: 6px 0 4px; letter-spacing: 0.2px; }
-      .role { color: var(--muted); font-weight: 500; margin: 0; }
-      .chipbar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+      .stacked { display: flex; align-items: center; gap: 20px; }
+      .name { font-size: 24px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.5px; }
+      .role { color: var(--muted); font-weight: 400; margin: 0; font-size: 14px; }
+      .chipbar { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
       .chip {
-        padding: 6px 10px; border-radius: 999px; font-size: 12px; color: #fee2e2;
-        background: linear-gradient(135deg, rgba(185,28,28,0.22), rgba(127,29,29,0.18));
-        border: 1px solid rgba(185,28,28,0.35);
+        padding: 6px 12px; border-radius: 6px; font-size: 11px; color: #fee2e2;
+        background: rgba(185,28,28,0.15);
+        border: 1px solid rgba(185,28,28,0.25);
+        font-weight: 500;
       }
-      .social { display: flex; gap: 12px; margin-top: 18px; }
-      .icon-btn { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; border: 1px solid var(--border); background: var(--glass); color: var(--text); text-decoration: none; }
-      .icon-btn:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-1px); }
+      .social { display: flex; gap: 10px; margin-top: 24px; }
+      .icon-btn { width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; border: 1px solid var(--border); background: transparent; color: var(--text); text-decoration: none; transition: all 0.2s ease; }
+      .icon-btn:hover { border-color: var(--brand); background: rgba(185,28,28,0.1); }
 
-      .content { display: grid; gap: 22px; }
-      .section { padding: 24px; }
-      .section h2 { margin: 0 0 12px; font-size: 20px; }
+      .content { display: grid; gap: 24px; }
+      .section { padding: 32px; }
+      .section h2 { margin: 0 0 20px; font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
       .muted { color: var(--muted); }
-      .lead { font-size: 15px; line-height: 1.8; color: #d1d5db; }
+      .lead { font-size: 15px; line-height: 1.7; color: #d1d5db; margin-bottom: 0; }
 
-      .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
       @media (min-width: 640px) { .info-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
       .info {
-        padding: 14px; border-radius: 14px; border: 1px solid var(--border);
-        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        padding: 16px; border-radius: 8px; border: 1px solid var(--border);
+        background: transparent;
       }
-      .info .label { color: var(--muted); font-size: 12px; }
-      .info .value { font-weight: 700; }
+      .info .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+      .info .value { font-weight: 600; font-size: 14px; }
 
-      .skills { display: grid; gap: 10px; }
+      .skills { display: grid; gap: 12px; }
       .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
-      .tag { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--glass); font-size: 13px; }
+      .tag { padding: 8px 14px; border: 1px solid var(--border); border-radius: 6px; background: transparent; font-size: 13px; font-weight: 400; }
 
-      .timeline { position: relative; padding-left: 18px; }
-      .timeline::before { content: ""; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(180deg, rgba(185,28,28,0.55), rgba(127,29,29,0.45)); border-radius: 2px; }
-      .time-item { position: relative; padding: 10px 0 10px 12px; }
-      .time-item::before { content: ""; position: absolute; left: -6px; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 0 0 3px rgba(185,28,28,0.25); }
-      .time-title { margin: 0; font-weight: 700; }
-      .time-meta { margin: 2px 0 6px; color: var(--muted); font-size: 13px; }
+      .timeline { position: relative; padding-left: 20px; }
+      .timeline::before { content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+      .time-item { position: relative; padding: 16px 0 16px 16px; }
+      .time-item::before { content: ""; position: absolute; left: -4px; top: 20px; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); border: 2px solid var(--bg); }
+      .time-title { margin: 0 0 4px; font-weight: 600; font-size: 16px; }
+      .time-meta { margin: 0 0 8px; color: var(--muted); font-size: 13px; }
 
       .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
       @media (min-width: 740px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-      .gcard { position: relative; overflow: hidden; border-radius: 14px; border: 1px solid var(--border); background: var(--glass); }
-      .gcard img { width: 100%; height: 160px; object-fit: cover; display: block; filter: saturate(1.05) contrast(1.02); }
-      .gcard .cap { position: absolute; left: 8px; right: 8px; bottom: 8px; padding: 8px 10px; border-radius: 10px; background: rgba(58,18,24,0.55); border: 1px solid rgba(255,255,255,0.16); font-size: 12px; }
+      .gcard { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); background: transparent; }
+      .gcard img { width: 100%; height: 160px; object-fit: cover; display: block; }
+      .gcard .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); font-size: 12px; color: #fff; }
 
-      .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
-      .cta .actions { display: flex; gap: 10px; }
+      .cta { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+      .cta .actions { display: flex; gap: 12px; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+      .btn:hover {
+        border-color: var(--brand);
+        background: rgba(185,28,28,0.1);
+        color: var(--text);
+      }
 
-      footer { padding: 24px 0 40px; color: var(--muted); text-align: center; }
+      footer { padding: 32px 0 40px; color: var(--muted); text-align: center; font-size: 14px; }
     </style>
   </head>
   <body>
@@ -255,7 +274,7 @@
           <div class="card section">
             <h2>Tentang Al-Kautsar</h2>
             <p class="lead">Al-Kautsar adalah lingkungan belajar yang menumbuhkan karakter, kompetensi, dan kepedulian. Kami menghadirkan ekosistem modern yang memadukan nilai religius, kemandirian, serta keunggulan akademik agar peserta didik siap berkontribusi nyata.</p>
-            <div class="info-grid" style="margin-top: 10px;">
+            <div class="info-grid">
               <div class="info">
                 <div class="label">Fokus</div>
                 <div class="value">Pendidikan & Pembinaan</div>
@@ -318,7 +337,7 @@
                 <figcaption class="cap">Asrama</figcaption>
               </figure>
               <figure class="gcard">
-                <img src="bg.jpg" alt="Suasana kebersamaan" />
+                <img src="assets/3.jpg" alt="Suasana kebersamaan" />
                 <figcaption class="cap">Suasana kebersamaan</figcaption>
               </figure>
             </div>
