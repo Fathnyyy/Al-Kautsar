@@ -130,9 +130,8 @@
       </div>
     </div>
   </header>
-    <!-- Hero Section --><section class="relative z-10 flex items-start justify-center w-full min-h-screen pt-40 md:pt-48 lg:pt-56 pb-16 md:pb-20 lg:pb-24 bg-cover bg-center"
-  style="background-image: url('assets/bg-asrama.jpg');">
-  <div class="absolute inset-0 bg-black/40 z-0"></div>
+    <!-- Hero Section --><section class="relative z-10 flex items-start justify-center w-full min-h-screen pt-40 md:pt-48 lg:pt-56 pb-16 md:pb-20 lg:pb-24" style="background: linear-gradient(to bottom, #8E0A1E 0%, #8E0A1E 20%, #a61f33 36%, #c14b61 54%, #dd8fa0 70%, #f5e6e9 82%, #ffffff 90%, #ffffff 100%);">
+  <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 80%, transparent 100%);"></div>
 
   <div class="relative z-10 w-full px-8 md:px-12 lg:px-16 xl:px-20">
     <div class="max-w-2xl mx-auto text-center space-y-6">
@@ -228,8 +227,8 @@
 
         <!-- Berjiwa Kuat -->
         <div class="bg-white border border-[#8E0A1E]/20 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
-          <h3 class="font-semibold text-[#8E0A1E] mb-2">Berjiwa Kuat</h3>
-          <p class="text-[#8E0A1E]/80 text-sm">
+          <h3 class="font-semibold text-[#8E0A1E] mb-3 text-center">Berjiwa Kuat</h3>
+          <p class="text-[#8E0A1E]/80 text-sm text-center">
             Pembentukan mental, kemandirian, kedisiplinan,
             serta rasa tanggung jawab sosial.
           </p>
@@ -266,12 +265,12 @@
   <section class="w-full py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Galeri Kegiatan</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-[#8E0A1E]">Galeri Kegiatan</h2>
         <p class="text-gray-600 text-lg">Lihat beberapa momen kegiatan kami</p>
       </div>
       
      <!-- Gallery Pola Landscape-Portrait-Landscape -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 overflow-hidden rounded-xl mb-8">
+<div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 overflow-hidden rounded-xl mb-8">
   <!-- Kolom 1 -->
   <div class="flex flex-col gap-2">
     <!-- Gambar 1 -->
@@ -322,14 +321,16 @@
 </div>
 
 <script>
-  // Shuffle otomatis urutan gambar
-  const galleryColumns = document.querySelectorAll(".grid > div");
-
-  galleryColumns.forEach(column => {
-    const items = Array.from(column.children);
-    const shuffled = items.sort(() => Math.random() - 0.5);
-    shuffled.forEach(item => column.appendChild(item));
-  });
+  // Shuffle otomatis urutan gambar (hanya untuk galeri, bukan card)
+  const galleryGrid = document.getElementById("gallery-grid");
+  if (galleryGrid) {
+    const galleryColumns = galleryGrid.querySelectorAll("> div");
+    galleryColumns.forEach(column => {
+      const items = Array.from(column.children);
+      const shuffled = items.sort(() => Math.random() - 0.5);
+      shuffled.forEach(item => column.appendChild(item));
+    });
+  }
 </script>
 
 
