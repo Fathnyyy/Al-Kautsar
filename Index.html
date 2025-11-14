@@ -134,54 +134,60 @@
   <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 80%, transparent 100%);"></div>
 
   <div class="relative z-10 w-full px-8 md:px-12 lg:px-16 xl:px-20">
-    <div class="max-w-2xl mx-auto text-center space-y-6">
-      <!-- Logo -->
-      <div class="flex items-center justify-center gap-4 md:gap-6">
-        <img src="assets/Asrama1.png"
-          alt="Logo Al-Kautsar"
-          class="h-16 md:h-24 w-auto object-contain drop-shadow-lg filter brightness-0 invert"
-          style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)) brightness(0) invert(1);">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <!-- Gambar di Kiri -->
+      <div class="order-2 lg:order-1 flex items-center justify-center lg:justify-start">
+        <div class="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
+          <img src="assets/Asrama1.png"
+            alt="Logo Al-Kautsar"
+            class="h-16 md:h-24 w-auto object-contain drop-shadow-lg filter brightness-0 invert"
+            style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)) brightness(0) invert(1);">
+        </div>
       </div>
 
-      <!-- Heading -->
-      <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-white drop-shadow-lg" 
-          style="text-shadow: 0 2px 6px rgba(0,0,0,0.3);">
-        Religius, Berjiwa Kuat dan Kreatif.
-      </h3>
+      <!-- Konten Teks di Kanan -->
+      <div class="order-1 lg:order-2 space-y-6 text-center lg:text-left">
+    
+        <!-- Heading -->
+        <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-white drop-shadow-lg" 
+            style="text-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+          Religius, Berjiwa Kuat dan Kreatif.
+        </h3>
 
-      <!-- Paragraf -->
-      <p class="text-white text-sm md:text-base lg:text-lg drop-shadow-lg" 
-         style="text-shadow: 0 2px 6px rgba(0,0,0,0.3);">
-        Asrama Al Kautsar membentuk generasi yang religius, berjiwa kuat, dan kreatif. 
-        Setiap santri dibimbing agar ketika lulus, mereka menjadi pribadi yang sukses dan bermanfaat bagi sesama.
-      </p>
+        <!-- Paragraf -->
+        <p class="text-white text-sm md:text-base lg:text-lg drop-shadow-lg" 
+           style="text-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+          Asrama Al Kautsar membentuk generasi yang religius, berjiwa kuat, dan kreatif. 
+          Setiap santri dibimbing agar ketika lulus, mereka menjadi pribadi yang sukses dan bermanfaat bagi sesama.
+        </p>
 
-      <!-- Tombol -->
-      <div class="flex flex-col sm:flex-row gap-4 mt-8 md:mt-10 items-center justify-center">
-        <button class="px-8 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <span class="flex items-center justify-center">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 
-              5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 
-              14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 
-              18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-            </svg>
-            Informasi Pendaftaran
-          </span>
-        </button>
+        <!-- Tombol -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-8 md:mt-10 items-center lg:items-start justify-center lg:justify-start">
+          <button class="px-8 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 
+                5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 
+                14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 
+                18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+              Informasi Pendaftaran
+            </span>
+          </button>
 
-        <button class="px-8 py-3 bg-white text-[#8E0A1E] font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1">
-          <span class="flex items-center justify-center">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 
-              2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 
-              00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-            Hubungi Kami
-          </span>
-        </button>
+          <button class="px-8 py-3 bg-white text-[#8E0A1E] font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1">
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 
+                2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 
+                00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              Hubungi Kami
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -430,45 +436,55 @@
         </div>
       </div>
 
-      <!-- MAPS (valid embed clean card) -->
-      <div class="relative bg-white border border-gray-200 shadow-xl rounded-2xl overflow-hidden">
-        <div class="absolute -top-5 left-6 bg-[#8E0A1E] text-white px-4 py-1 rounded-full text-sm shadow-md">
-          Lokasi Kami
-        </div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.132418672038!2d112.22647867418842!3d-7.545206675356159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e786adaa1f6ec99%3A0xfc84a6211e3b2064!2sAsrama%20Al-Kautsar!5e0!3m2!1sid!2sid!4v1703001111111!5m2!1sid!2sid"
-          class="w-full h-96 border-0 rounded-t-2xl" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <div class="p-6 text-center">
-          <p class="text-[#8E0A1E]/80 mb-3">Asrama Al-Kautsar<br>Jombang, Jawa Timur</p>
-          <a href="https://goo.gl/maps/AKwArXYMwj6GuDLt8" target="_blank"
-            class="inline-flex items-center px-5 py-2.5 bg-[#8E0A1E] text-white rounded-xl hover:bg-[#6B0715] transition font-medium shadow-md">
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            Buka di Google Maps
-          </a>
-        </div>
-      </div>
-    </div>
+ <!-- MAPS (valid embed clean card) -->
+<div class="relative bg-white border border-gray-200 shadow-xl rounded-2xl overflow-hidden">
+  <div class="absolute -top-5 left-6 bg-[#8E0A1E] text-white px-4 py-1 rounded-full text-sm shadow-md">
+    Lokasi Kami
   </div>
-</section>
 
+  <!-- IFRAME baru yang kamu berikan -->
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.279237917958!2d112.27303357400493!3d-7.5444965924690255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e786adaa1f6ec99%3A0xfc84a6211e3b2064!2sAsrama%20Al-Kautsar!5e0!3m2!1sid!2sid!4v1763103283543!5m2!1sid!2sid"
+    class="w-full h-96 border-0 rounded-t-2xl"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
 
+  <div class="p-6 text-center">
+    <p class="text-[#8E0A1E]/80 mb-3">
+      Asrama Al-Kautsar<br>Jombang, Jawa Timur
+    </p>
 
+    <!-- Tautan ke Google Maps -->
+    <a href="https://maps.app.goo.gl/Wj2iC8fBrWZniJrz7" target="_blank"
+      class="inline-flex items-center px-5 py-2.5 bg-[#8E0A1E] text-white rounded-xl hover:bg-[#6B0715] transition font-medium shadow-md">
 
-      
-  <!-- Footer -->
- <!-- Footer -->
-  <footer class="bg-[#8E0A1E] text-center py-10 text-white">
-    <div class="max-w-6xl mx-auto">
-      <img src="assets/LogoAS.png" alt="Logo Al-Kautsar" class="h-16 rounded-full w-auto mx-auto mb-4">
-      <p class="text-lg font-semibold">Asrama IX Al-Kautsar</p>
-      <p class="text-sm text-gray-300 mt-1">Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.</p>
-      <p class="text-sm text-gray-400 mt-6">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+
+      Buka di Google Maps
+    </a>
+  </div>
+</div>
+
     </div>
-  </footer>
+  </div>  
+
+  
+  <!-- Footer -->
+<footer class="bg-[#8E0A1E] text-center py-16 text-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <img src="assets/LogoAS.png" alt="Logo Al-Kautsar" class="h-16 rounded-full w-auto mx-auto mb-4">
+    <p class="text-lg font-semibold">Asrama IX Al-Kautsar</p>
+    <p class="text-sm text-gray-300 mt-1">Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.</p>
+    <p class="text-sm text-gray-400 mt-6">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
+  </div>
+</footer>
+
+
       
       <!-- JavaScript untuk Animasi Navbar -->
       <script src="script.js"></script>
