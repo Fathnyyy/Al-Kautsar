@@ -20,7 +20,9 @@
         line-height: 1.7;
       }
 
-
+      main {
+        padding-top: 104px;
+      }
 
       footer {
         padding: 32px 0 40px;
@@ -47,7 +49,7 @@
           </button>
         </div>
         
-           <!-- Desktop Navigation dengan Animasi -->
+        <!-- Desktop Navigation dengan Animasi -->
       <div class="hidden lg:flex lg:gap-x-8 mx-auto">
   <a href="Index.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
           <span class="relative z-10">Home</span>
@@ -77,7 +79,8 @@
           <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </a>
       </div>
-    </nav>
+      </nav>
+
       <!-- Mobile Menu dengan Animasi Modern -->
       <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden">
         <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-gradient-to-b from-[#6B0715] to-[#8E0A1E] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out">
@@ -135,9 +138,10 @@
       </div>
     </header>
 
-    <main>
-      <section class="relative w-full min-h-[60vh] flex items-center justify-center pb-16  relative z-10 flex items-start justify-center w-full min-h-screen  lg:pt-35 pb-16 md:pb-20 lg:pb-24" id="section-gradient">
-        <div class="relative z-10 max-w-3xl mx-auto pb-6 pt-3 text-center text-white space-y-6">
+      <!-- Hero Section -->
+     <section class="relative z-10 flex items-start justify-center w-full min-h-screen pt-40 md:pt-48 lg:pt-56 pb-16 md:pb-20 lg:pb-24" style="background: linear-gradient(to bottom, #8E0A1E 0%, #8E0A1E 20%, #a61f33 36%, #c14b61 54%, #dd8fa0 70%, #f5e6e9 82%, #ffffff 90%, #ffffff 100%);">
+  <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 80%, transparent 100%);"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center text-white space-y-6">
           <p class="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80">Asrama Al-Kautsar</p>
           <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">Sejarah Perjalanan Asrama</h1>
           <p class="text-sm md:text-base lg:text-lg text-white/85">
@@ -168,20 +172,19 @@
               berdaya juang, dan berdedikasi tetap menjadi ruh yang dijaga bersama.
             </p>
           </div>
+        </div>
+      </section>
 
-        
-        </div>      </section>
-    </main>   
    <!-- Footer -->
-  <footer class="bg-[#8E0A1E] text-center py-10 text-white">
-    <div class="max-w-6xl mx-auto">
-      <img src="assets/LogoAS.png" alt="Logo Al-Kautsar" class="h-16 rounded-full w-auto mx-auto mb-4">
-      <p class="text-lg font-semibold">Asrama IX Al-Kautsar</p>
-      <p class="text-sm text-gray-300 mt-1">Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.</p>
-      <p class="text-sm text-gray-400 mt-6">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
-    </div>
-  </footer>
-      
+<footer class="bg-[#8E0A1E] text-center py-6 text-white">
+  <div class="max-w-5xl mx-auto px-4">
+    <img src="assets/Asrama1.png" alt="Logo Al-Kautsar" class="h-16 rounded-full w-auto mx-auto mb-4">
+    <p class="text-lg font-semibold">Asrama IX Al-Kautsar</p>
+    <p class="text-sm text-gray-300 mt-1">Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.</p>
+    <p class="text-sm text-gray-400 mt-6">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
+  </div>
+</footer>
+
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>

@@ -8,11 +8,6 @@
     --ink: #1E1E1E;
 }
 
-
-#section-gradient{
-    background: linear-gradient(to bottom, #8E0A1E 0%, #8E0A1E 20%, #a61f33 36%, #c14b61 54%, #dd8fa0 70%, #f5e6e9 82%, #ffffff 90%, #ffffff 100%)
-}
-
 /* Default styles */
 body {
     background: linear-gradient(
