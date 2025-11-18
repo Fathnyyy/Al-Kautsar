@@ -18,7 +18,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="assets/asrama.png" type="image/png">
     <link rel="stylesheet" href="stylesheet.css">
-    <title>Al-Kautsar - Galeri</title>
+    <title>Al-Kautsar - Contact</title>
 </head>
 <body>
   <!-- Navbar -->
@@ -170,100 +170,96 @@
         Kumpulan dokumentasi kegiatan santri Al-Kautsar yang menggambarkan aktivitas sehari-hari, prestasi, dan momen berharga di lingkungan asrama.
       </p>
   </div>
-</section>
 
 
+</section>  
+<!-- CONTACT SECTION -->
+<section id="contact" class="relative bg-gray-100 py-24 px-6">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
 
+    <!-- LEFT SIDE : FORM -->
+    <div class="bg-white shadow-xl border border-gray-200 p-10 rounded-2xl">
+      <h2 class="text-3xl font-bold text-[#8E0A1E] mb-2">Hubungi Kami</h2>
+      <p class="text-gray-600 mb-8">
+        Kirimkan pertanyaan atau pesan kamu melalui form ini. Kami akan merespons secepat mungkin.
+      </p>
 
-
-    <!-- Grid Galeri -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 overflow-hidden">
-
-      <!-- Kolom 1 -->
-      <div class="flex flex-col gap-3">
-        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/1.JPG')">
-          <img src="assets/1.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/4.JPG')">
-          <img src="assets/4.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+      <form class="space-y-6">
+        <div>
+          <label class="block font-semibold mb-1">Nama Lengkap</label>
+          <input type="text" class="w-full border border-gray-300 rounded-lg p-3 focus:border-[#8E0A1E] focus:ring-1 focus:ring-[#8E0A1E]" placeholder="Nama kamu...">
         </div>
 
-        <div class="relative group aspect-[2/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/12.JPG')">
-          <img src="assets/12.jpg" alt="Gedung Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        <div>
+          <label class="block font-semibold mb-1">Email</label>
+          <input type="email" class="w-full border border-gray-300 rounded-lg p-3 focus:border-[#8E0A1E] focus:ring-1 focus:ring-[#8E0A1E]" placeholder="email@example.com">
         </div>
-      </div>
 
-      <!-- Kolom 2 -->
-      <div class="flex flex-col gap-3">
-        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/5.JPG')">
-          <img src="assets/5.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        <div>
+          <label class="block font-semibold mb-1">Pesan</label>
+          <textarea class="w-full border border-gray-300 rounded-lg p-3 h-32 resize-none focus:border-[#8E0A1E] focus:ring-1 focus:ring-[#8E0A1E]" placeholder="Tulis pesan di sini..."></textarea>
         </div>
-        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/2.JPG')">
-          <img src="assets/2.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-        <div class="relative group aspect-[2/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/11.JPG')">
-          <img src="assets/11.jpg" alt="Lab Komputer" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-        <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/13.JPG')">
-          <img src="assets/13.jpg" alt="Halaman Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-      </div>
 
-      <!-- Kolom 3 -->
-      <div class="flex flex-col gap-3">
-        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/3.JPG')">
-          <img src="assets/3.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/6.jpg')">
-          <img src="assets/6.jpg" alt="Karya Siswa" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-        <div class="relative group aspect-[5/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/10.jpg')">
-          <img src="assets/10.jpg" alt="Kantin Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-        <div class="relative group aspect-[4/5] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/9.jpg')">
-          <img src="assets/9.jpg" alt="Taman Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-        <div class="relative group aspect-[5/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/8.JPG')">
-          <img src="assets/8.jpg" alt="Gedung Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
-        </div>
-      </div>
-<section class="py-10 pb-10"></section>
+        <button class="w-full bg-[#8E0A1E] text-white font-semibold py-3 rounded-lg hover:bg-[#6d0817] transition">
+          Kirim Pesan
+        </button>
+      </form>
     </div>
+
+
+    <!-- RIGHT SIDE : CONTACT CARD + MAPS -->
+    <div class="space-y-6">
+
+      <!-- CONTACT INFO CARD -->
+      <div class="bg-white border border-gray-200 shadow-xl p-8 rounded-2xl">
+        <h3 class="text-2xl font-bold text-[#8E0A1E] mb-4">Informasi Kontak</h3>
+
+        <div class="space-y-3 text-gray-700">
+          <p class="flex items-start gap-3">
+            <span class="text-[#8E0A1E] text-xl">📍</span>
+            Jl. Contoh No. 123, Bandar Lampung
+          </p>
+
+          <p class="flex items-start gap-3">
+            <span class="text-[#8E0A1E] text-xl">📞</span>
+            +62 812-3456-7890
+          </p>
+
+          <p class="flex items-start gap-3">
+            <span class="text-[#8E0A1E] text-xl">📧</span>
+            info@example.com
+          </p>
+        </div>
+      </div>
+
+    <!-- MAPS (valid embed clean card) -->
+      <div class="relative bg-white border border-gray-200 shadow-xl rounded-2xl overflow-hidden">
+        <div class="absolute -top-5 left-6 bg-[#8E0A1E] text-white px-4 py-1 rounded-full text-sm shadow-md">
+          Lokasi Kami
+        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.132418672038!2d112.22647867418842!3d-7.545206675356159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e786adaa1f6ec99%3A0xfc84a6211e3b2064!2sAsrama%20Al-Kautsar!5e0!3m2!1sid!2sid!4v1703001111111!5m2!1sid!2sid"
+          class="w-full h-96 border-0 rounded-t-2xl" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="p-6 text-center">
+          <p class="text-[#8E0A1E]/80 mb-3">Asrama Al-Kautsar<br>Jombang, Jawa Timur</p>
+          <a href="https://goo.gl/maps/AKwArXYMwj6GuDLt8" target="_blank"
+            class="inline-flex items-center px-5 py-2.5 bg-[#8E0A1E] text-white rounded-xl hover:bg-[#6B0715] transition font-medium shadow-md">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Buka di Google Maps
+          </a>
+        </div>
+      </div>
+      
+    </div>
+
   </div>
 
-  <script>
-  // Shuffle otomatis urutan gambar
-  const galleryColumns = document.querySelectorAll(".grid > div");
-
-  galleryColumns.forEach(column => {
-    const items = Array.from(column.children);
-    const shuffled = items.sort(() => Math.random() - 0.5);
-    shuffled.forEach(item => column.appendChild(item));
-  });
-</script>
-
-
-  <!-- Lightbox / Popup Foto -->
-  <div id="lightbox" class="fixed inset-0 bg-black/80 hidden justify-center items-center z-50 p-4" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Preview Foto" class="max-w-4xl w-auto max-h-[90vh] rounded-lg shadow-lg">
-  </div>
-
-  <script>
-    function openLightbox(imageSrc) {
-      const lightbox = document.getElementById("lightbox");
-      const img = document.getElementById("lightbox-img");
-      img.src = imageSrc;
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-    }
-
-    function closeLightbox() {
-      const lightbox = document.getElementById("lightbox");
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
-    }
-  </script>
 </section>
+
 
 
   <!-- Footer -->

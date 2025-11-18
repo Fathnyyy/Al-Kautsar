@@ -5,25 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#5a1a1a" />
     <title>Profil • Al-Kautsar</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="assets/asrama.png" type="image/png" />
     <link rel="stylesheet" href="stylesheet.css" />
+
     <style>
       body {
         margin: 0;
-        font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
         background: transparent;
         color: #111827;
         line-height: 1.7;
       }
-
-      main {
-        padding-top: 104px;
-      }
-
+      main { padding-top: 104px; }
       footer {
         padding: 32px 0 40px;
         color: #6b7280;
@@ -31,165 +29,176 @@
         font-size: 14px;
       }
     </style>
-    
   </head>
+
   <body>
-    <!-- Navbar -->
+    <!-- ========================================================== -->
+    <!-- NAVBAR -->
+    <!-- ========================================================== -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full default-navbar navbar-animate">
       <nav aria-label="Global" class="flex items-center justify-between p-4 container mx-auto">
         <div class="hidden lg:flex items-center nav-deco"></div>
 
-        <!-- Mobile Menu Button dengan Animasi -->
+        <!-- MOBILE BUTTON -->
         <div class="flex lg:hidden">
-          <button id="mobile-menu-btn" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200 hamburger hover:bg-blue-500/20 transition-all duration-300">
-            <span class="sr-only">Open main menu</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-              <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+          <button id="mobile-menu-btn" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
         </div>
-        
-        <!-- Desktop Navigation dengan Animasi -->
-      <div class="hidden lg:flex lg:gap-x-8 mx-auto">
-  <a href="Index.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
-          <span class="relative z-10">Home</span>
-          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-        </a>
-  <a href="profil.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
-          <span class="relative z-10">Profil</span>
-          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-        </a>
-  <a href="Gallery.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
-          <span class="relative z-10">Galery</span>
-          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-        </a>
-  <a href="#kontak" class="nav-btn text-sm font-semibold text-white px-4 py-2">
-          <span class="relative z-10">Contact</span>
-          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-        </a>
-      </div>
-      <div class="hidden lg:flex">
-  <a href="#kontak" class="nav-btn px-6 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#8E0A1E]/50 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 active:translate-y-0 border border-[#5A0A0A] relative overflow-hidden group">
-          <span class="relative z-10">Daftar</span>
-          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-        </a>
-      </div>
-      </nav>
 
-      <!-- Mobile Menu dengan Animasi Modern -->
-      <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden">
-        <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-gradient-to-b from-[#6B0715] to-[#8E0A1E] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out">
-          <div class="flex flex-col h-full">
-            <!-- Mobile Menu Header -->
-            <div class="flex items-center justify-between p-6 border-b border-slate-700/50">
-              <span class="text-white font-bold text-lg">Menu</span>
-              <button id="close-mobile-menu" type="button" class="rounded-lg p-2 text-gray-300 hover:bg-slate-700/50 hover:text-white transition-all duration-300">
-                  <span class="sr-only">Close menu</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
-                    <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </button>
-              </div>
-            
-            <!-- Mobile Menu Navigation -->
-            <div class="flex-1 px-6 py-8">
-              <nav class="space-y-4">
-                <a href="Index.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                  </svg>
-                  Home
-                </a>
-                <a href="profil.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                  </svg>
-                  Profil
-                </a>
-                <a href="Gallery.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
-                  Galery
-                </a>
-                <a href="Index.html#kontak" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                  </svg>
-                  Contact
-                </a>
-              </nav>
-                  </div>
-            
-            <!-- Mobile Menu Footer -->
-            <div class="p-6 border-t border-slate-700/50">
-              <div class="text-center text-gray-400 text-sm">
-                <p>© 2024 Al-Kautsar</p>
-                <p class="mt-1">Pendidikan Islam Terpadu</p>
-              </div>
-            </div>
-          </div>
+        <!-- DESKTOP MENU -->
+        <div class="hidden lg:flex lg:gap-x-8 mx-auto">
+          <a href="Index.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">Home</a>
+          <a href="profil.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">Profil</a>
+          <a href="Gallery.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">Galery</a>
+          <a href="kontak.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">Contact</a>
         </div>
-      </div>
+
+        <div class="hidden lg:flex">
+          <a href="#kontak" class="nav-btn px-6 py-3 bg-[#8E0A1E] text-white font-semibold rounded-full shadow-lg">Daftar</a>
+        </div>
+      </nav>
     </header>
 
-      <!-- Hero Section -->
-     <section class="relative z-10 flex items-start justify-center w-full min-h-screen pt-40 md:pt-48 lg:pt-56 pb-16 md:pb-20 lg:pb-24" style="background: linear-gradient(to bottom, #8E0A1E 0%, #8E0A1E 20%, #a61f33 36%, #c14b61 54%, #dd8fa0 70%, #f5e6e9 82%, #ffffff 90%, #ffffff 100%);">
-  <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 80%, transparent 100%);"></div>
-        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center text-white space-y-6">
-          <p class="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80">Asrama Al-Kautsar</p>
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">Sejarah Perjalanan Asrama</h1>
-          <p class="text-sm md:text-base lg:text-lg text-white/85">
-            Menelusuri langkah panjang pembinaan santri sejak pendirian, perkembangan program, hingga penguatan jati diri
-            sebagai rumah kedua yang penuh nilai kebersamaan dan ketakwaan.
+    <!-- ========================================================== -->
+    <!-- HERO SECTION -->
+    <!-- ========================================================== -->
+    <section class="relative z-10 flex items-start justify-center w-full min-h-screen pt-40 md:pt-48 lg:pt-56 pb-16"
+      style="background: linear-gradient(to bottom, #8E0A1E 0%, #8E0A1E 20%, #a61f33 36%, #c14b61 54%, #dd8fa0 70%, #f5e6e9 82%, #ffffff 90%, #ffffff 100%);">
+      
+      <div class="absolute inset-0 z-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 80%);"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-center text-white space-y-6">
+        <p class="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80">Asrama Al-Kautsar</p>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">Sejarah & Biografi Pendiri Asrama</h1>
+        <p class="text-sm md:text-base lg:text-lg text-white/85">
+          Menelusuri perjalanan panjang pendirian, perkembangan, dan tokoh yang mendasari berdirinya Asrama IX Al-Kautsar.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- SECTION SEJARAH -->
+    <!-- ========================================================== -->
+    <section id="sejarah" class="py-20 bg-white text-[#4B0C14]">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10">
+
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Sejarah Asrama</h2>
+          <div class="w-24 h-1 bg-[#8E0A1E] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="space-y-6 text-lg leading-relaxed text-[#4B0C14]/90">
+          <p>
+            Asrama Al-Kautsar berdiri sejak tahun 1985 di Pondok Pesantren Darul Ulum, Rejoso, Peterongan, Jombang.
+            Didirikan oleh Al-Mursyid Almarhum KH. Ahmad Rifai Romly, putra dari KH. Romly Tamim, bersama istri beliau
+            Nyai Hj. Ummu Ainan Rifai, putri dari KH. Mahrus Aly (PP Lirboyo Kediri).
+          </p>
+
+          <p>
+            Pada awal berdirinya, asrama ini hanya memiliki lima santri dan khusus putra. Seiring berkembangnya zaman,
+            Asrama IX Al-Kautsar kemudian membuka asrama putri dan telah menjadi rumah bagi ratusan santri dari seluruh Indonesia.
+          </p>
+
+          <p>
+            Setelah KH. Rifai Romly wafat pada tahun 1985, kepemimpinan diteruskan oleh istrinya,
+            Nyai Hj. Ummu Ainan Rifai hingga beliau wafat pada 5 Ramadhan 1445 H / 16 Maret 2024.
+            Kini kepengasuhan dilanjutkan oleh putri beliau, Ning Hj. Indira Zulaikha S.Psi bersama
+            Gus H. Basyir Baick Ya'qub.
+          </p>
+
+          <p>
+            Saat ini Asrama IX Al-Kautsar menampung lebih dari 200 santri putra dan putri dan terus berkembang menjadi lingkungan
+            pembinaan yang religius, disiplin, dan penuh kekeluargaan.
           </p>
         </div>
-      </section>
 
-      <section class="py-20 bg-white text-[#4B0C14]">
-        <div class="max-w-5xl mx-auto px-6 lg:px-10 space-y-12">
-          <div class="space-y-6 text-lg leading-relaxed text-[#4B0C14]/90">
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- SECTION BIOGRAFI PENDIRI -->
+    <!-- ========================================================== -->
+    <section id="biografi" class="py-20 bg-[#F8F5F6] text-[#4B0C14]">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 space-y-16">
+
+        <div class="text-center">
+          <h2 class="text-3xl md:text-4xl font-bold">Biografi Pendiri</h2>
+          <div class="w-24 h-1 bg-[#8E0A1E] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- BIO 1 -->
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <img src="assets/15.jpg" alt="KH Ahmad Rifai Romly" class="rounded-xl shadow-lg object-cover w-full">
+
+          <div class="space-y-4 text-lg leading-relaxed">
+            <h3 class="text-2xl font-bold">KH. Ahmad Rifai Romly (Alm.)</h3>
             <p>
-              Asrama Al-Kautsar berdiri pada awal dekade 2000-an sebagai respons atas kebutuhan lingkungan belajar yang terpadu
-              antara pendidikan formal dan pembinaan karakter Islami. Sejak awal, fokus utama asrama adalah menciptakan ruang
-              tumbuh yang hangat, disiplin, sekaligus visioner bagi generasi muda yang ingin memadukan kecerdasan intelektual dan
-              spiritual.
+              KH. A. Rifai Romly adalah putra dari KH. Romly Tamim dan Nyai Hj. Chodijah. Beliau lahir di Rejoso
+              pada 22 April 1942 dan mengenyam pendidikan dasar hingga Mu’allimin di Darul Ulum Jombang.
             </p>
+
             <p>
-              Pada tahap penguatan program, jajaran pengasuh menyusun kurikulum harian yang menyeimbangkan kegiatan ibadah,
-              akademik, dan pembinaan keterampilan hidup. Tradisi halaqah subuh, kajian malam, hingga program mentoring personal
-              diperkenalkan untuk memastikan setiap santri mendapat perhatian yang menyeluruh.
+              Beliau melanjutkan pendidikan pesantren di Sarang Rembang bersama KH. Ahmad Zubair, kemudian ke
+              Pondok Pesantren Lirboyo Kediri. Setelah itu menempuh pendidikan formal di Universitas Darul Ulum.
             </p>
+
             <p>
-              Memasuki era modern, Asrama Al-Kautsar terus beradaptasi dengan menghadirkan infrastruktur belajar yang lebih nyaman
-              dan teknologi yang mendukung. Kolaborasi dengan alumni, orang tua, serta mitra pendidikan semakin memperkuat peran
-              asrama sebagai tempat berproses dan berkarya. Hingga kini, semangat awal untuk melahirkan santri berakhlak mulia,
-              berdaya juang, dan berdedikasi tetap menjadi ruh yang dijaga bersama.
+              Beliau pernah mengabdi sebagai dosen di Fakultas Hukum UNDAR, menjabat sebagai Sekretaris GUP Darul Ulum,
+              Ketua Umum IKAPDAR (1976), Majelis Muwafiq, dan anggota DPRD Tingkat II Jombang.
+            </p>
+
+            <p>
+              Beliau wafat pada 12 Desember 1985 karena kecelakaan dan dimakamkan di Rejoso, yang kini menjadi
+              salah satu pusat ziarah santri.
             </p>
           </div>
         </div>
-      </section>
 
-   <!-- Footer -->
-<footer class="bg-[#8E0A1E] text-center py-6 text-white">
-  <div class="max-w-5xl mx-auto px-4">
-    <img src="assets/Asrama1.png" alt="Logo Al-Kautsar" class="h-16 rounded-full w-auto mx-auto mb-4">
-    <p class="text-lg font-semibold">Asrama IX Al-Kautsar</p>
-    <p class="text-sm text-gray-300 mt-1">Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.</p>
-    <p class="text-sm text-gray-400 mt-6">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
-  </div>
-</footer>
+        <!-- BIO 2 -->
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div class="order-2 md:order-1 space-y-4 text-lg leading-relaxed">
+            <h3 class="text-2xl font-bold">Nyai Hj. Ummu Ainan Rifai (Alm.)</h3>
 
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+            <p>
+              Nyai Hj. Ummu Ainan Rifai (nama asli: Ummu Ainan Habasy) adalah putri ulama besar,
+              KH. Mahrus Ali dan KH. Abdul Kadir dari Pesantren Lirboyo Kediri. Beliau lahir pada
+              31 Desember 1954 di Kediri.
+            </p>
+
+            <p>
+              Beliau menempuh pendidikan di SDN Lirboyo Kediri, lalu di Pesantren Darul Ulum,
+              Al-Muayyad, dan Pesantren Demangan Kudus.
+            </p>
+
+            <p>
+              Beliau wafat pada Sabtu, 8 Ramadhan 1445 H / 16 Maret 2024 M, menjelang waktu berbuka puasa.
+              Dimakamkan di Makam Pesantren Lirboyo Kediri.
+            </p>
+          </div>
+
+          <img src="assets/16.jpg" alt="Nyai Hj. Ummu Ainan Rifai" class="rounded-xl shadow-lg object-cover w-full order-1 md:order-2">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- FOOTER -->
+    <!-- ========================================================== -->
+    <footer class="bg-[#8E0A1E] text-center py-6 text-white">
+      <div class="max-w-5xl mx-auto px-4">
+        <img src="assets/Asrama1.png" alt="Logo Al-Kautsar" class="h-16 rounded-full w-auto mx-auto mb-4">
+        <p class="text-lg font-semibold">Asrama IX Al-Kautsar</p>
+        <p class="text-sm text-gray-300 mt-1">Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.</p>
+        <p class="text-sm text-gray-400 mt-6">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
+      </div>
+    </footer>
+
+
+
     <script src="script.js"></script>
   </body>
-  </html>
-
-
+</html>
