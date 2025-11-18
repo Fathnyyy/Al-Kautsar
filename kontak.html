@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Offset untuk navbar fixed */
+      section[id] {
+        scroll-margin-top: 80px;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="assets/asrama.png" type="image/png">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Al-Kautsar - Galeri</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full default-navbar navbar-animate">
+    <nav aria-label="Global" class="flex items-center justify-between p-4 container mx-auto">
+      <div class="hidden lg:flex items-center nav-deco"></div>
+
+       <!-- Mobile Menu Button dengan Animasi -->
+        <div class="flex lg:hidden">
+          <button id="mobile-menu-btn" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200 hamburger hover:bg-blue-500/20 transition-all duration-300">
+            <span class="sr-only">Open main menu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+              <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+             <!-- Desktop Navigation dengan Animasi -->
+      <div class="hidden lg:flex lg:gap-x-8 mx-auto">
+  <a href="Index.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
+          <span class="relative z-10">Home</span>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+        </a>
+  <a href="profil.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
+          <span class="relative z-10">Profil</span>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+        </a>
+  <a href="Gallery.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
+          <span class="relative z-10">Galery</span>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+        </a>
+  <a href="#kontak" class="nav-btn text-sm font-semibold text-white px-4 py-2">
+          <span class="relative z-10">Contact</span>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+        </a>
+      </div>
+      <div class="hidden lg:flex">
+  <a href="#kontak" class="nav-btn px-6 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#8E0A1E]/50 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 active:translate-y-0 border border-[#5A0A0A] relative overflow-hidden group">
+          <span class="relative z-10">Daftar</span>
+          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+        </a>
+      </div>
+    </nav>
+      
+    <!-- Mobile Menu dengan Animasi Modern -->
+      <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden">
+        <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-gradient-to-b from-[#6B0715] to-[#8E0A1E] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out">
+          <div class="flex flex-col h-full">
+            <!-- Mobile Menu Header -->
+            <div class="flex items-center justify-between p-6 border-b border-slate-700/50">
+              <span class="text-white font-bold text-lg">Menu</span>
+              <button id="close-mobile-menu" type="button" class="rounded-lg p-2 text-gray-300 hover:bg-slate-700/50 hover:text-white transition-all duration-300">
+                  <span class="sr-only">Close menu</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
+                    <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            
+            <!-- Mobile Menu Navigation -->
+            <div class="flex-1 px-6 py-8">
+              <nav class="space-y-4">
+                <a href="Index.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                  </svg>
+                  Home
+                </a>
+                <a href="profil.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                  </svg>
+                  Profil
+                </a>
+                <a href="Gallery.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  Galery
+                </a>
+                <a href="Index.html#kontak" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  Contact
+                </a>
+              </nav>
+                  </div>
+            
+            <!-- Mobile Menu Footer -->
+            <div class="p-6 border-t border-slate-700/50">
+              <div class="text-center text-gray-400 text-sm">
+                <p>© 2024 Al-Kautsar</p>
+                <p class="mt-1">Pendidikan Islam Terpadu</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+ <!-- HERO SECTION -->
+<section 
+  class="relative z-10 w-full min-h-screen flex items-center"
+  style="background: linear-gradient(to bottom, 
+      #8E0A1E 0%, #8E0A1E 20%, 
+      #a61f33 36%, 
+      #c14b61 54%, 
+      #dd8fa0 70%, 
+      #f5e6e9 82%, 
+      #ffffff 90%, #ffffff 100%);"
+>
+
+  <!-- Overlay Gelap -->
+  <div 
+    class="absolute inset-0 z-0"
+    style="background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.25) 0%,
+      rgba(0,0,0,0.15) 40%,
+      rgba(0,0,0,0) 80%
+    );">
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+    <!-- Gambar / Logo Kiri -->
+    <div class="flex justify-center md:justify-start">
+      <img 
+        src="assets/LogoAS.png" 
+        alt="Logo Al-Kautsar" 
+         class="h-16 md:h-80 w-auto object-contain drop-shadow-lg filter brightness-0 invert"
+            style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)) brightness(0) invert(1);">
+    </div>
+
+    <!-- Teks Kanan -->
+    <div class="text-center md:text-left text-white">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+        Galeri Asrama
+      </h1>
+
+      <p class="text-base md:text-lg text-gray-200 mb-8 leading-relaxed">
+        Kumpulan dokumentasi kegiatan santri Al-Kautsar yang menggambarkan aktivitas sehari-hari, prestasi, dan momen berharga di lingkungan asrama.
+      </p>
+  </div>
+</section>
+
+
+
+
+
+    <!-- Grid Galeri -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 overflow-hidden">
+
+      <!-- Kolom 1 -->
+      <div class="flex flex-col gap-3">
+        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/1.JPG')">
+          <img src="assets/1.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/4.JPG')">
+          <img src="assets/4.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+
+        <div class="relative group aspect-[2/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/12.JPG')">
+          <img src="assets/12.jpg" alt="Gedung Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+      </div>
+
+      <!-- Kolom 2 -->
+      <div class="flex flex-col gap-3">
+        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/5.JPG')">
+          <img src="assets/5.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/2.JPG')">
+          <img src="assets/2.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-[2/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/11.JPG')">
+          <img src="assets/11.jpg" alt="Lab Komputer" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/13.JPG')">
+          <img src="assets/13.jpg" alt="Halaman Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+      </div>
+
+      <!-- Kolom 3 -->
+      <div class="flex flex-col gap-3">
+        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/3.JPG')">
+          <img src="assets/3.jpg" alt="Kegiatan" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-[4/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/6.jpg')">
+          <img src="assets/6.jpg" alt="Karya Siswa" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-[5/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/10.jpg')">
+          <img src="assets/10.jpg" alt="Kantin Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-[4/5] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/9.jpg')">
+          <img src="assets/9.jpg" alt="Taman Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+        <div class="relative group aspect-[5/3] overflow-hidden cursor-pointer rounded-lg" onclick="openLightbox('assets/8.JPG')">
+          <img src="assets/8.jpg" alt="Gedung Sekolah" class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+        </div>
+      </div>
+<section class="py-10 pb-10"></section>
+    </div>
+  </div>
+
+  <script>
+  // Shuffle otomatis urutan gambar
+  const galleryColumns = document.querySelectorAll(".grid > div");
+
+  galleryColumns.forEach(column => {
+    const items = Array.from(column.children);
+    const shuffled = items.sort(() => Math.random() - 0.5);
+    shuffled.forEach(item => column.appendChild(item));
+  });
+</script>
+
+
+  <!-- Lightbox / Popup Foto -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 hidden justify-center items-center z-50 p-4" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Preview Foto" class="max-w-4xl w-auto max-h-[90vh] rounded-lg shadow-lg">
+  </div>
+
+  <script>
+    function openLightbox(imageSrc) {
+      const lightbox = document.getElementById("lightbox");
+      const img = document.getElementById("lightbox-img");
+      img.src = imageSrc;
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+    }
+  </script>
+</section>
+
+
+  <!-- Footer -->
+<footer class="bg-[#8E0A1E] text-center py-6 text-white">
+  <div class="max-w-5xl mx-auto px-4">
+    <img src="assets/Asrama1.png" alt="Logo Al-Kautsar" class="h-16 rounded-full w-auto mx-auto mb-4">
+    <p class="text-lg font-semibold">Asrama IX Al-Kautsar</p>
+    <p class="text-sm text-gray-300 mt-1">Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.</p>
+    <p class="text-sm text-gray-400 mt-6">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- JavaScript untuk Animasi Navbar -->
+  <script src="script.js"></script>
+  
+  <!-- JavaScript untuk Efek Interaktif Navbar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function closeMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-menu-overlay');
+        if (mobileMenu && mobileOverlay) {
+          mobileMenu.classList.add('translate-x-full');
+          mobileOverlay.classList.add('hidden');
+        }
+      }
+      
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      mobileNavLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMobileMenu();
+        });
+      });
+      
+      const navButtons = document.querySelectorAll('.nav-btn');
+      navButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          const existingRipple = this.querySelector('.ripple-effect');
+          if (existingRipple) {
+            existingRipple.remove();
+          }
+          
+          const ripple = document.createElement('span');
+          ripple.classList.add('ripple-effect');
+          
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = x + 'px';
+          ripple.style.top = y + 'px';
+          ripple.style.position = 'absolute';
+          ripple.style.borderRadius = '50%';
+          ripple.style.background = 'rgba(255, 255, 255, 0.4)';
+          ripple.style.transform = 'scale(0)';
+          ripple.style.animation = 'ripple 600ms ease-out';
+          ripple.style.pointerEvents = 'none';
+          ripple.style.zIndex = '5';
+          
+          this.appendChild(ripple);
+          
+          setTimeout(function() {
+            if (ripple.parentNode) {
+              ripple.remove();
+            }
+          }, 600);
+        });
+      });
+    });
+  </script>
+  
+  <style>
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+    
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .nav-btn:hover::before {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  </style>
+</body>
+</html>
+
