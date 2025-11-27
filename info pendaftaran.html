@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pendaftaran Asrama Al-Kautsar</title>
+
+  <meta name="description" content="Informasi pendaftaran santri baru Asrama Al-Kautsar: jadwal, persyaratan, program, biaya, fasilitas, kontak dan unduhan." />
+
+  <style>
+    /* ========== Reset & Base ========== */
+    :root{
+      --accent:#8E0A1E;
+      --muted:#666;
+      --card-bg:#fff;
+      --page-bg:#fbfaf8;
+      --radius:12px;
+      --glass: rgba(255,255,255,0.85);
+      --max-width:1080px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Poppins", "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#fbfaf8 0%, #f7f3ef 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom:90px; /* space for fixed CTA */
+    }
+    a{color:inherit}
+
+    /* ========== Container ========== */
+    .container{
+      width:calc(100% - 32px);
+      max-width:var(--max-width);
+      margin:20px auto;
+      padding:0 12px;
+    }
+
+    /* ========== Hero ========== */
+    .hero{
+      background: linear-gradient(180deg, rgba(142,10,30,0.9), rgba(142,10,30,0.9)),
+                  url('images/hero-placeholder.jpg') center/cover no-repeat;
+      border-radius:var(--radius);
+      color:white;
+      padding:28px 18px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+      overflow:hidden;
+    }
+    .hero__col{
+      flex:1 1 0;
+      min-width:0;
+    }
+    .logo-badge{
+      background:var(--glass);
+      padding:8px 12px;
+      border-radius:999px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:10px;
+      max-width:260px;
+    }
+    .hero h1{
+      margin:0 0 6px 0;
+      font-size:20px;
+      line-height:1.15;
+      font-weight:700;
+    }
+    .hero p{
+      margin:0;
+      opacity:0.95;
+      font-size:14px;
+    }
+    .hero-tags{
+      margin-top:12px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .tag{
+      background:white;
+      color:var(--accent);
+      padding:8px 10px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:13px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    /* ========== Section Title & Card ========== */
+    .section{
+      margin-top:18px;
+    }
+    .section__title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:0 0 10px 0;
+      color:var(--accent);
+      font-size:18px;
+      font-weight:700;
+    }
+    .card{
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:14px;
+      box-shadow:0 6px 20px rgba(17,17,17,0.06);
+      margin-bottom:14px;
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    /* ========== Lists & Tables ========== */
+    .cols{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    ul.clean{
+      padding-left:18px;
+      margin:0;
+    }
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+    table.pricing{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:15px;
+    }
+    table.pricing td{
+      padding:8px 6px;
+      border-bottom:1px dashed #eee;
+    }
+    table.pricing tr:last-child td{border-bottom:0}
+
+    /* ========== Contact & Buttons ========== */
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      font-size:15px;
+    }
+    .btn-primary{ background:var(--accent); color:white; box-shadow:0 6px 18px rgba(142,10,30,0.18) }
+    .btn-wa{ background:#25D366; color:#053; }
+    .btn-outline{
+      background:transparent;
+      color:var(--accent);
+      border:2px solid rgba(142,10,30,0.12);
+    }
+
+    /* ========== Map ========== */
+    .map{
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid #eee;
+      height:220px;
+    }
+
+    /* ========== Downloads ========== */
+    .downloads{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .download-item{
+      padding:10px 12px;
+      background:#fff;
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-weight:600;
+      text-decoration:none;
+      color:var(--accent);
+    }
+
+    /* ========== Fixed CTA bar (mobile friendly) ========== */
+    .cta-bar{
+      position:fixed;
+      left:12px;
+      right:12px;
+      bottom:16px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      background:linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+      padding:10px;
+      border-radius:14px;
+      box-shadow:0 18px 50px rgba(17,17,17,0.12);
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+    .cta-left{display:flex; gap:10px; align-items:center}
+    .cta-price{ font-weight:800; color:var(--accent) }
+    .cta-actions{ display:flex; gap:8px }
+
+    /* ========== Responsive ========== */
+    @media(min-width:720px){
+      .hero{ padding:34px; }
+      .hero h1{ font-size:26px }
+      .cols{ grid-template-columns: 1fr 1fr; }
+      .map{ height:320px }
+    }
+    @media(min-width:1024px){
+      .container{ padding:0 20px }
+      .hero{ gap:28px; border-radius:18px }
+      .cta-bar{ left:calc(50% - var(--max-width)/2 + 12px); right:calc(50% - var(--max-width)/2 + 12px) }
+    }
+
+    /* small tweaks */
+    .muted-note{ font-size:13px; color:var(--muted); margin-top:6px }
+  </style>
+</head>
+<body>
+
+  <main class="container" id="top">
+    <!-- HERO -->
+    <section class="hero" style="background-image:
+      linear-gradient(180deg, rgba(142,10,30,0.88), rgba(142,10,30,0.88)),
+      url('images/brosur-asrama.jpg');">
+      <div class="hero__col">
+        <div class="logo-badge">
+          <!-- ganti dengan logo jika ada -->
+          <img src="images/logo-placeholder.png" alt="logo" style="width:34px; height:34px; border-radius:6px; object-fit:cover" />
+          <span style="font-size:13px">ASRAMA AL-KAUTSAR</span>
+        </div>
+
+        <h1>Pendaftaran Santri Baru — Asrama Al-Kautsar</h1>
+        <p>Lingkungan hunian pendidikan nyaman, disiplin, dan berfokus pada pembinaan ibadah, akhlak, serta kompetensi santri (bahasa, tahfidz, kitab kuning, dan keterampilan).</p>
+
+        <div class="hero-tags" aria-hidden>
+          <div class="tag">Program Harian & Unggulan</div>
+          <div class="tag">Fasilitas Lengkap</div>
+          <div class="tag">Pembinaan 24 Jam</div>
+        </div>
+      </div>
+
+      <div class="hero__col" style="text-align:right; min-width:180px;">
+        <div style="background:rgba(255,255,255,0.08); padding:10px; border-radius:10px; display:inline-block">
+          <div style="font-weight:700; font-size:12px; opacity:0.95">Pendaftaran Gelombang</div>
+          <div style="font-weight:800; font-size:20px; margin-top:6px">1 — 30 Januari</div>
+          <div style="font-size:13px; margin-top:8px" class="muted-note">Daftar online atau datang langsung ke kantor asrama.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JADWAL -->
+    <section class="section">
+      <div class="section__title">Jadwal Pendaftaran & Tanggal Penting</div>
+      <div class="card">
+        <div class="cols">
+          <div>
+            <ul class="clean">
+              <li><strong>Gelombang 1:</strong> Januari – Maret</li>
+              <li><strong>Gelombang 2:</strong> April – Juni</li>
+              <li><strong>Gelombang 3:</strong> Juli – Agustus (jika kuota tersedia)</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="clean">
+              <li><strong>Pengumpulan Berkas:</strong> Sepanjang periode gelombang</li>
+              <li><strong>Pengumuman Administrasi:</strong> 2–3 hari setelah verifikasi</li>
+              <li><strong>Daftar Ulang:</strong> Maks. 7 hari setelah dinyatakan diterima</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSYARATAN -->
+    <section class="section">
+      <div class="section__title">Persyaratan Dokumen</div>
+      <div class="card">
+        <ul class="clean">
+          <li>Fotokopi Kartu Keluarga (KK)</li>
+          <li>Fotokopi Akta Kelahiran</li>
+          <li>Fotokopi Raport Terakhir / Surat Keterangan Sekolah</li>
+          <li>Pas Foto 3×4 (2 lembar)</li>
+          <li>Surat Kesehatan (jika diminta)</li>
+          <li>Formulir Pendaftaran (tersedia dalam file PDF untuk diunduh)</li>
+        </ul>
+
+        <p class="small" style="margin-top:10px">
+          <strong>Contoh & format:</strong> Pas foto latar biru/merah; raport lampirkan halaman biodata & nilai; formulir bisa diisi digital atau tulis tangan.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section class="section">
+      <div class="section__title">Program Harian & Unggulan</div>
+      <div class="card">
+        <div class="cols">
+          <div>
+            <strong>Program Harian</strong>
+            <ul class="clean">
+              <li>Pembiasaan Ibadah (Fardhu & Sunnah)</li>
+              <li>Tahlil & Istighotsah</li>
+              <li>Pengajian Al-Qur’an & Kitab Kuning</li>
+              <li>Tahfidzul Qur’an</li>
+              <li>Group Banjari</li>
+              <li>Maulid Diba' & Burdah</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Program Unggulan</strong>
+            <ul class="clean">
+              <li>Public Speaking & Ajang Kreasi</li>
+              <li>PHBI & PHBN</li>
+              <li>Kelas Diniyah</li>
+              <li>Kelas Bahasa Arab & Inggris</li>
+              <li>Kelas IT / Multimedia</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIAYA -->
+    <section class="section">
+      <div class="section__title">Biaya & Opsi Pembayaran</div>
+      <div class="card">
+        <div class="cols">
+          <div>
+            <strong>Santri Putra</strong>
+            <table class="pricing" aria-hidden>
+              <tr><td>Formulir</td><td style="text-align:right">Rp 15.000</td></tr>
+              <tr><td>Pengembangan Gedung</td><td style="text-align:right">Rp 200.000</td></tr>
+              <tr><td>Pengadaan Kitab</td><td style="text-align:right">Rp 150.000</td></tr>
+              <tr><td>Syari'ah & Biaya Makan</td><td style="text-align:right">Rp 435.000</td></tr>
+              <tr><td>Sewa Lemari</td><td style="text-align:right">Rp 200.000</td></tr>
+              <tr><td><strong>Jumlah Total</strong></td><td style="text-align:right"><strong>Rp 1.000.000</strong></td></tr>
+            </table>
+          </div>
+
+          <div>
+            <strong>Santri Putri</strong>
+            <table class="pricing" aria-hidden>
+              <tr><td>Formulir</td><td style="text-align:right">Rp 15.000</td></tr>
+              <tr><td>Pengembangan Gedung</td><td style="text-align:right">Rp 250.000</td></tr>
+              <tr><td>Pengadaan Kitab</td><td style="text-align:right">Rp 150.000</td></tr>
+              <tr><td>Syari'ah & Biaya Makan</td><td style="text-align:right">Rp 435.000</td></tr>
+              <tr><td>Sewa Lemari</td><td style="text-align:right">Rp 200.000</td></tr>
+              <tr><td><strong>Jumlah Total</strong></td><td style="text-align:right"><strong>Rp 1.050.000</strong></td></tr>
+            </table>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top:10px">Catatan: Uang makan/DP sebesar <strong>Rp 500.000</strong>. Jika membatalkan pendaftaran, uang makan/DP tidak dapat dikembalikan.</p>
+
+        <div style="margin-top:12px">
+          <div style="font-weight:700; margin-bottom:6px">Metode Pembayaran</div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <div class="download-item" style="background:#fff; font-weight:700">Transfer Bank: BSI — 721XXXXXXX (Pengelola Asrama)</div>
+            <div class="download-item" style="background:#fff; font-weight:700">Pembayaran Langsung di Kantor</div>
+          </div>
+          <p class="small" style="margin-top:8px">Silakan kirim bukti transfer ke WhatsApp admin atau upload pada formulir pendaftaran online.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KAMAR & FASILITAS -->
+    <section class="section">
+      <div class="section__title">Kuota Kamar, Tipe & Fasilitas</div>
+      <div class="card">
+        <div class="cols">
+          <div>
+            <strong>Kuota (estimasi)</strong>
+            <ul class="clean">
+              <li>Putra: ± 40–50 santri</li>
+              <li>Putri: ± 40–50 santri</li>
+            </ul>
+            <strong style="display:block; margin-top:8px">Tipe Kamar</strong>
+            <ul class="clean">
+              <li>Reguler: kapasitas 6–10 orang / kamar</li>
+              <li>Standar: tempat tidur + lemari</li>
+              <li>Supervisi: khusus program unggulan (jika tersedia)</li>
+            </ul>
+          </div>
+
+          <div>
+            <strong>Fasilitas</strong>
+            <ul class="clean">
+              <li>Almari</li>
+              <li>Kipas Angin</li>
+              <li>Dapur</li>
+              <li>Aula</li>
+              <li>Televisi</li>
+              <li>Mesin Cuci</li>
+              <li>AC (beberapa ruang)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK & MAP -->
+    <section class="section">
+      <div class="section__title">Kontak & Lokasi</div>
+      <div class="card">
+        <div class="cols">
+          <div>
+            <p style="margin:0 0 8px"><strong>WhatsApp Admin:</strong></p>
+            <!-- GANTI nomor WA di href di bawah sesuai nomor resmi -->
+            <a class="btn btn-wa" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+
+            <p style="margin:12px 0 0"><strong>Instagram:</strong> <span class="small">@asrama_alkautsar</span></p>
+            <p style="margin:6px 0 0"><strong>Info lengkap:</strong> <span class="small">linktr.ee/psbalkautsar</span></p>
+          </div>
+
+          <div>
+            <!-- GANTI src iframe maps sesuai lokasi asrama -->
+            <div class="map" role="region" aria-label="Peta lokasi Asrama Al-Kautsar">
+              <iframe loading="lazy" style="width:100%;height:100%;border:0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.650961948021!2d106.822695!3d-6.173110!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e77d6b0001%3A0x4c6c533d50f6!2sMonas!5e0!3m2!1sid!2sid!4v123456789" 
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOADS -->
+    <section class="section">
+      <div class="section__title">Unduh (Formulir & Brosur)</div>
+      <div class="card">
+        <div class="downloads">
+          <!-- GANTI href ke file PDF sesuai lokasi server -->
+          <a class="download-item" href="files/formulir-pendaftaran.pdf" download>📄 Formulir Pendaftaran (PDF)</a>
+          <a class="download-item" href="files/brosur-asrama.pdf" download>📄 Brosur Asrama (PDF)</a>
+          <a class="download-item" href="files/panduan-berkas.pdf" download>📄 Panduan Berkas</a>
+          <a class="download-item" href="files/tata-tertib.pdf" download>📄 Tata Tertib Asrama</a>
+        </div>
+
+        <p class="muted-note">Catatan: Pastikan mengisi formulir dan melampirkan bukti transfer saat melakukan daftar online.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FIXED CTA -->
+  <div class="cta-bar" role="dialog" aria-label="Aksi cepat pendaftaran">
+    <div class="cta-left">
+      <div style="font-size:13px; color:#555">Mulai Pendaftaran</div>
+      <div class="cta-price">Mulai dari Rp 1.000.000</div>
+    </div>
+
+    <div class="cta-actions">
+      <!-- GANTI link form online -->
+      <a class="btn btn-primary" href="https://forms.gle/xxxx" target="_blank" rel="noopener">Daftar Online</a>
+      <a class="btn btn-outline" href="#top">Ringkasan</a>
+    </div>
+  </div>
+
+  <!-- OPTIONAL: small script for accessibility focus -->
+  <script>
+    // Focus first actionable WA link on load for keyboard users (optional)
+    document.addEventListener('DOMContentLoaded', () => {
+      const wa = document.querySelector('.btn-wa');
+      if(wa) wa.setAttribute('aria-label', 'Hubungi admin via WhatsApp (buka di tab baru)');
+    });
+  </script>
+
+</body>
+</html>
