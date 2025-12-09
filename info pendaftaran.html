@@ -3,39 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Informasi Pendaftaran Asrama</title>
-
+  <style>
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 80px; }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/asrama.png" type="image/png">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <title>Informasi Pendaftaran Asrama</title>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-[Poppins]">
 
 
-  <!-- Navbar -->
-      <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-  <div class="relative w-full h-screen bg-fixed">
+   <!-- Navbar -->
   <header id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full default-navbar navbar-animate">
-  <nav aria-label="Global" class="flex items-center justify-between p-4 container mx-auto">
+    <nav aria-label="Global" class="flex items-center justify-between p-4 container mx-auto">
       <div class="hidden lg:flex items-center nav-deco"></div>
 
-      <!-- Mobile Menu Button dengan Animasi -->
-      <div class="flex lg:hidden">
-  <button id="mobile-menu-btn" type="button" class="nav-btn -m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-white hamburger bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group hover:scale-105 hover:shadow-lg hover:shadow-[#8E0A1E]/50 active:scale-95">
-          <span class="sr-only">Open main menu</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 relative z-10">
-            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
-          <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-        </button>
-      </div>
-      
-      <!-- Desktop Navigation dengan Animasi -->
+       <!-- Mobile Menu Button dengan Animasi -->
+        <div class="flex lg:hidden">
+          <button id="mobile-menu-btn" type="button" class="nav-btn -m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-white hamburger bg-[#8E0A1E] hover:bg-[#7a0e18] transition-all duration-300 border border-[#5A0A0A] relative overflow-hidden group hover:scale-105 hover:shadow-lg hover:shadow-[#8E0A1E]/50 active:scale-95">
+            <span class="sr-only">Open main menu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 relative z-10">
+              <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+            <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+          </button>
+        </div>
+
+             <!-- Desktop Navigation dengan Animasi -->
       <div class="hidden lg:flex lg:gap-x-8 mx-auto">
   <a href="Index.html" class="nav-btn text-sm font-semibold text-white px-4 py-2">
           <span class="relative z-10">Home</span>
@@ -58,7 +61,7 @@
           <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
         </a>
       </div>
-     <div class="hidden lg:flex">
+      <div class="hidden lg:flex">
   <a href="https://linktr.ee/psbalkautsar" target="_blank"
      class="nav-btn px-6 py-3 bg-[#8E0A1E] hover:bg-[#7a0e18] text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#8E0A1E]/50 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 active:translate-y-0 border border-[#5A0A0A] relative overflow-hidden group">   
     <span class="relative z-10">Daftar</span>
@@ -66,62 +69,63 @@
     <span class="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
   </a>
 </div>
-
+      
     <!-- Mobile Menu dengan Animasi Modern -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden">
-      <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-gradient-to-b from-[#6B0715] to-[#8E0A1E] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out">
-        <div class="flex flex-col h-full">
-          <!-- Mobile Menu Header -->
-          <div class="flex items-center justify-between p-6 border-b border-slate-700/50">
-            <span class="text-white font-bold text-lg">Menu</span>
-            <button id="close-mobile-menu" type="button" class="rounded-lg p-2 text-gray-300 hover:bg-slate-700/50 hover:text-white transition-all duration-300">
-                <span class="sr-only">Close menu</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
-                  <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </div>
-          
-          <!-- Mobile Menu Navigation -->
-          <div class="flex-1 px-6 py-8">
-            <nav class="space-y-4">
-              <a href="Index.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                </svg>
-                Home
-              </a>
-              <a href="profil.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                </svg>
-                Profil
-              </a>
-              <a href="Gallery.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                Galery
-              </a>
-              <a href="kontak.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-                Contact
-              </a>
-            </nav>
-                </div>
-          
-          <!-- Mobile Menu Footer -->
-          <div class="p-6 border-t border-slate-700/50">
-            <div class="text-center text-gray-400 text-sm">
-              <p>© 2024 Al-Kautsar</p>
-              <p class="mt-1">Pendidikan Islam Terpadu</p>
+      <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden">
+        <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-gradient-to-b from-[#6B0715] to-[#8E0A1E] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out">
+          <div class="flex flex-col h-full">
+            <!-- Mobile Menu Header -->
+            <div class="flex items-center justify-between p-6 border-b border-slate-700/50">
+              <span class="text-white font-bold text-lg">Menu</span>
+              <button id="close-mobile-menu" type="button" class="rounded-lg p-2 text-gray-300 hover:bg-slate-700/50 hover:text-white transition-all duration-300">
+                  <span class="sr-only">Close menu</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
+                    <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            
+            <!-- Mobile Menu Navigation -->
+            <div class="flex-1 px-6 py-8">
+              <nav class="space-y-4">
+                <a href="Index.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                  </svg>
+                  Home
+                </a>
+                <a href="profil.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                  </svg>
+                  Profil
+                </a>
+                <a href="Gallery.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  Galery
+                </a>
+                <a href="kontak.html" class="mobile-nav-link flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-500/20 transition-all duration-300">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  Contact
+                </a>
+              </nav>
+                  </div>
+            
+            <!-- Mobile Menu Footer -->
+            <div class="p-6 border-t border-slate-700/50">
+              <div class="text-center text-gray-400 text-sm">
+                <p>© 2024 Al-Kautsar</p>
+                <p class="mt-1">Pendidikan Islam Terpadu</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
   <!-- HERO SECTION -->
@@ -244,5 +248,110 @@
   </div>
 </footer>
 
+ <!-- JavaScript untuk Animasi Navbar -->
+      <script src="script.js"></script>
+      
+      <!-- JavaScript untuk Efek Interaktif Navbar -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Fungsi untuk menutup menu mobile
+          function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-menu-overlay');
+            if (mobileMenu && mobileOverlay) {
+              mobileMenu.classList.add('translate-x-full');
+              mobileOverlay.classList.add('hidden');
+            }
+          }
+          
+          // Tutup menu mobile saat link navbar diklik
+          const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+          mobileNavLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+              closeMobileMenu();
+            });
+          });
+          
+          // Efek Ripple saat klik pada tombol navbar
+          const navButtons = document.querySelectorAll('.nav-btn');
+          
+          navButtons.forEach(function(button) {
+            button.addEventListener('click', function(e) {
+              // Hapus ripple sebelumnya jika ada
+              const existingRipple = this.querySelector('.ripple-effect');
+              if (existingRipple) {
+                existingRipple.remove();
+              }
+              
+              // Buat elemen ripple
+              const ripple = document.createElement('span');
+              ripple.classList.add('ripple-effect');
+              
+              // Dapatkan posisi klik relatif terhadap tombol
+              const rect = this.getBoundingClientRect();
+              const size = Math.max(rect.width, rect.height);
+              const x = e.clientX - rect.left - size / 2;
+              const y = e.clientY - rect.top - size / 2;
+              
+              // Set style ripple
+              ripple.style.width = ripple.style.height = size + 'px';
+              ripple.style.left = x + 'px';
+              ripple.style.top = y + 'px';
+              ripple.style.position = 'absolute';
+              ripple.style.borderRadius = '50%';
+              ripple.style.background = 'rgba(255, 255, 255, 0.4)';
+              ripple.style.transform = 'scale(0)';
+              ripple.style.animation = 'ripple 600ms ease-out';
+              ripple.style.pointerEvents = 'none';
+              ripple.style.zIndex = '5';
+              
+              // Tambahkan ripple ke tombol
+              this.appendChild(ripple);
+              
+              // Hapus ripple setelah animasi selesai
+              setTimeout(function() {
+                if (ripple.parentNode) {
+                  ripple.remove();
+                }
+              }, 600);
+            });
+          });
+          AOS.init({
+       duration: 1000, // durasi animasi dalam ms
+       once: true,     // hanya animasi sekali
+       offset: 120,    // jarak sebelum mulai animasi
+       });
+        });
+      </script>
+      
+      <!-- CSS untuk Animasi Ripple -->
+      <style>
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+        
+        /* Efek pulse ring saat hover */
+        .nav-btn::before {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          border-radius: inherit;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          opacity: 0;
+          transform: scale(0.8);
+          transition: all 0.3s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+        
+        .nav-btn:hover::before {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      </style>
+      
 </body>
 </html>
