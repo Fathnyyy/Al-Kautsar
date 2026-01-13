@@ -1,23 +1,21 @@
-/* Theme */
+/* Theme - Islamic Elegant Green */
 :root {
-    --primary: #42B549;
-    --primary-dark: #2e8b35;
-    --text: #FFFFFF;
-    --gold: #FFD700;
-    --light: #F5F5F5;
-    --ink: #1E1E1E;
+    --primary: #0F3D2E; /* Hijau Emerald Gelap */
+    --primary-dark: #0A2A1F;
+    --primary-hover: #145A44; /* Hijau lebih terang untuk hover */
+    --text: #F9FAFB; /* Teks navbar putih lembut */
+    --text-main: #1F2937; /* Teks utama hitam soft */
+    --text-secondary: #6B7280; /* Teks sekunder abu lembut */
+    --gold: #C9A24D; /* Gold lembut */
+    --light: #FFFFFF; /* Putih bersih */
+    --ink: #1F2937; /* Hitam soft */
+    --background: #FFFFFF; /* Background utama putih bersih */
 }
 
 /* Default styles */
 body {
-    background: linear-gradient(
-        to bottom,
-        rgba(66, 181, 73, 0.05) 0%,
-        rgba(66, 181, 73, 0.02) 22%,
-        #ffffff 60%,
-        #ffffff 100%
-    );
-    color: var(--text);
+    background: var(--background);
+    color: var(--text-main);
     font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -62,7 +60,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    background: var(--gold);
     transition: width 0.3s ease;
 }
 
@@ -71,8 +69,8 @@ body {
 }
 
 .mobile-nav-link:hover {
-    transform: translateX(10px);
-    color: #60a5fa !important;
+    transform: translateX(5px);
+    color: var(--gold) !important;
 }
 
 
@@ -125,41 +123,23 @@ body {
     overflow: hidden;
 }
 
-/* Beautiful Default Navbar */
+/* Beautiful Default Navbar - Minimalis & Elegan */
 .default-navbar {
     position: relative;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    backdrop-filter: blur(25px);
-    border-bottom: 2px solid rgba(255, 215, 0, 0.35);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    background: var(--primary); /* Hijau Emerald Gelap */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201, 162, 77, 0.2); /* Gold lembut tipis */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow lebih tipis */
     overflow: hidden;
 }
 
-/* Default Navbar Animations */
+/* Default Navbar Animations - Disederhanakan */
 .default-navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.12), transparent);
-    transition: left 0.8s ease;
-}
-
-.default-navbar:hover::before {
-    left: 100%;
+    display: none; /* Hilangkan animasi shimmer */
 }
 
 .default-navbar::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(255, 215, 0, 0.85) 0%, rgba(255, 215, 0, 1) 50%, rgba(255, 215, 0, 0.85) 100%);
-    animation: shimmerLine 3s ease-in-out infinite;
+    display: none; /* Hilangkan animasi garis bawah */
 }
 
 
@@ -172,21 +152,20 @@ body {
     }
 }
 
-/* Default Navbar Scroll Effect */
+/* Default Navbar Scroll Effect - Minimalis */
 .default-navbar-scroll {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    backdrop-filter: blur(30px);
-    border-bottom: 3px solid rgba(255, 215, 0, 0.5);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    background: var(--primary);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201, 162, 77, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .default-navbar-scroll::before {
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+    display: none;
 }
 
 .default-navbar-scroll::after {
-    background: linear-gradient(90deg, rgba(255, 215, 0, 0.95) 0%, rgba(255, 215, 0, 1) 50%, rgba(255, 215, 0, 0.95) 100%);
-    animation-duration: 2s;
+    display: none;
 }
 
 /* Geometric Navbar Animations */
@@ -444,12 +423,12 @@ body {
     }
 }
 
-/* Smooth Transitions */
+/* Smooth Transitions - Disederhanakan */
 * {
-    transition: all 0.3s ease;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Decorative element for navbar left */
+/* Decorative element for navbar left - Disederhanakan */
 .nav-deco {
     position: relative;
     width: 125px;
@@ -461,15 +440,41 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
-.nav-deco::before { top: 8px; opacity: 0.55; }
-.nav-deco::after { bottom: 8px; opacity: 0.3; }
+.nav-deco::before { top: 8px; opacity: 0.4; }
+.nav-deco::after { bottom: 8px; opacity: 0.2; }
+
+/* Navbar Link Hover - Minimalis */
+.nav-btn {
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-btn:hover {
+    color: var(--gold) !important;
+}
+
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-btn:hover::after {
+    width: 80%;
+}
 
 /* Footer theme */
 footer {
-    background-color: var(--ink);
+    background-color: var(--primary);
     color: var(--text);
 }
 
@@ -486,7 +491,7 @@ footer::before {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 /* Footer Link Animations */
@@ -506,7 +511,7 @@ footer a:not(.social-link)::after {
     left: 0;
     width: 0;
     height: 1px;
-    background: rgba(59, 130, 246, 0.8);
+    background: var(--gold);
     transition: width 0.3s ease;
 }
 
@@ -522,7 +527,7 @@ footer .social-link {
 
 footer .social-link:hover {
     transform: translateY(-2px) scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.35);
+    box-shadow: 0 4px 15px rgba(201, 162, 77, 0.35);
 }
 
 /* Floating Animation for Logo */
@@ -640,7 +645,7 @@ footer .social-link:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--primary-dark);
+    background: #F5F5F5;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -649,6 +654,6 @@ footer .social-link:hover {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #e6c200;
+    background: #B8903A;
 }
 
