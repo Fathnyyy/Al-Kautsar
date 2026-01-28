@@ -54,22 +54,11 @@ body {
 }
 
 .mobile-nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gold);
-    transition: width 0.3s ease;
-}
-
-.mobile-nav-link:hover::after {
-    width: 100%;
+    display: none;
 }
 
 .mobile-nav-link:hover {
-    transform: translateX(5px);
+    transform: translateX(4px);
     color: var(--gold) !important;
 }
 
@@ -123,49 +112,45 @@ body {
     overflow: hidden;
 }
 
-/* Beautiful Default Navbar - Minimalis & Elegan */
+/* Beautiful Default Navbar - Modern & Elegant */
 .default-navbar {
     position: relative;
-    background: var(--primary); /* Hijau Emerald Gelap */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201, 162, 77, 0.2); /* Gold lembut tipis */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow lebih tipis */
+    background: rgba(15, 61, 46, 0.95); /* Hijau Emerald Gelap dengan transparansi */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(201, 162, 77, 0.15);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 }
 
-/* Default Navbar Animations - Disederhanakan */
+/* Modern Navbar Glass Effect */
 .default-navbar::before {
-    display: none; /* Hilangkan animasi shimmer */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(201, 162, 77, 0.4) 50%, 
+        transparent 100%
+    );
+    opacity: 0.6;
 }
 
-.default-navbar::after {
-    display: none; /* Hilangkan animasi garis bawah */
-}
-
-
-@keyframes shimmerLine {
-    0%, 100% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-/* Default Navbar Scroll Effect - Minimalis */
+/* Default Navbar Scroll Effect - Modern */
 .default-navbar-scroll {
-    background: var(--primary);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201, 162, 77, 0.3);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background: rgba(15, 61, 46, 0.98);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(201, 162, 77, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
 
 .default-navbar-scroll::before {
-    display: none;
-}
-
-.default-navbar-scroll::after {
-    display: none;
+    opacity: 0.8;
 }
 
 /* Geometric Navbar Animations */
@@ -446,30 +431,46 @@ body {
 .nav-deco::before { top: 8px; opacity: 0.4; }
 .nav-deco::after { bottom: 8px; opacity: 0.2; }
 
-/* Navbar Link Hover - Minimalis */
+/* Navbar Link Hover - Modern */
 .nav-btn {
     position: relative;
-    transition: color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
 }
 
 .nav-btn:hover {
     color: var(--gold) !important;
+    background: rgba(201, 162, 77, 0.08);
 }
 
+/* Modern Underline Animation */
 .nav-btn::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 0.25rem;
     left: 50%;
-    transform: translateX(-50%);
-    width: 0;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
     height: 2px;
-    background: var(--gold);
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 2px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
 }
 
 .nav-btn:hover::after {
-    width: 80%;
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Active State */
+.nav-btn.active {
+    color: var(--gold) !important;
+    background: rgba(201, 162, 77, 0.1);
+}
+
+.nav-btn.active::after {
+    transform: translateX(-50%) scaleX(1);
 }
 
 /* Footer theme */

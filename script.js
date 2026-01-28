@@ -20,11 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
     let isMobileMenuOpen = false;
     
-    // Initialize mobile menu container only if mobile menu exists
-    let mobileMenuContainer = null;
-    if (mobileMenu && mobileMenu.parentElement) {
-        mobileMenuContainer = mobileMenu.parentElement;
-    }
+    // Close mobile menu when clicking nav links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (isMobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+    });
 
     // Throttle function for better performance
     function throttle(func, wait) {
@@ -60,21 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile menu toggle
     function toggleMobileMenu() {
-        if (!mobileMenuOverlay || !mobileMenuContainer) return;
+        if (!mobileMenuOverlay || !mobileMenu) return;
         
         if (!isMobileMenuOpen) {
             // Open mobile menu
             mobileMenuOverlay.classList.remove('hidden');
             setTimeout(() => {
-                mobileMenuContainer.classList.remove('translate-x-full');
-                mobileMenuOverlay.classList.add('mobile-menu-enter');
+                mobileMenu.classList.remove('translate-x-full');
             }, 10);
             isMobileMenuOpen = true;
             document.body.style.overflow = 'hidden';
         } else {
             // Close mobile menu
-            mobileMenuContainer.classList.add('translate-x-full');
-            mobileMenuOverlay.classList.remove('mobile-menu-enter');
+            mobileMenu.classList.add('translate-x-full');
             setTimeout(() => {
                 mobileMenuOverlay.classList.add('hidden');
             }, 300);
