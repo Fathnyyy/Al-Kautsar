@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Al-Kautsar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen font-sans" style="background: var(--gradient-soft);">
+
+    <!-- Login Section -->
+    <div id="login-section" class="fixed inset-0 z-50 flex items-center justify-center bg-cover bg-center"
+        style="background-image: linear-gradient(to bottom, rgba(15, 61, 46, 0.9), rgba(15, 61, 46, 0.8)), url('assets/1.jpg');">
+        <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-full max-w-md border border-white/20">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-2">Admin Login</h2>
+                <p class="text-gray-300">Masuk untuk mengelola berita</p>
+            </div>
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Username</label>
+                    <input type="text" id="username"
+                        class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-[#C9A24D] focus:ring-1 focus:ring-[#C9A24D] outline-none transition"
+                        placeholder="admin">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" id="password"
+                        class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-[#C9A24D] focus:ring-1 focus:ring-[#C9A24D] outline-none transition"
+                        placeholder="admin123">
+                </div>
+                <button type="submit"
+                    class="w-full py-3 bg-[#C9A24D] hover:bg-[#b08d42] text-white font-bold rounded-lg transition-all transform hover:scale-[1.02]">
+                    MASUK
+                </button>
+                <div id="login-error" class="hidden text-red-400 text-center text-sm mt-2">
+                    Username atau password salah!
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard-section" class="hidden min-h-screen flex flex-col">
+        <!-- Topbar -->
+        <header class="bg-[#0F3D2E] text-white shadow-md relative overflow-hidden">
+            <!-- Background Texture -->
+            <div class="absolute inset-0 opacity-10"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'3\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'3\'/%3E%3C/g%3E%3C/svg%3E');">
+            </div>
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center relative z-10">
+                <div class="flex items-center gap-3">
+                    <img src="assets/LogoAS.png" alt="Logo" class="h-8 w-auto">
+                    <span class="font-bold text-xl tracking-tight">Admin Panel</span>
+                </div>
+                <button id="logout-btn"
+                    class="px-4 py-2 bg-red-500/80 hover:bg-red-600 rounded-lg text-sm transition flex items-center gap-2 shadow-sm">
+                    Logout <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto px-6 py-8">
+            <!-- Tab Navigation -->
+            <div class="flex gap-4 mb-8 border-b border-gray-200">
+                <button onclick="switchTab('news')" id="tab-news"
+                    class="pb-2 px-4 font-semibold text-[#0F3D2E] border-b-2 border-[#0F3D2E] transition-colors">
+                    Berita
+                </button>
+                <button onclick="switchTab('gallery')" id="tab-gallery"
+                    class="pb-2 px-4 font-semibold text-gray-400 hover:text-[#0F3D2E] transition-colors">
+                    Galeri Foto
+                </button>
+            </div>
+
+            <!-- News Section -->
+            <div id="section-news" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Form Add/Edit News -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 sticky top-6">
+                        <h3 class="text-xl font-bold mb-6 text-gray-800 border-b pb-2">
+                            <span id="form-title">Tambah Berita</span>
+                        </h3>
+                        <form id="news-form" class="space-y-4">
+                            <input type="hidden" id="news-id">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Judul Berita</label>
+                                <input type="text" id="news-title" required
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal</label>
+                                <input type="date" id="news-date" required
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">URL Gambar</label>
+                                <input type="text" id="news-image" required
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none"
+                                    placeholder="https://...">
+                                <p class="text-xs text-gray-500 mt-1">Gunakan URL gambar valid</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Isi Berita</label>
+                                <textarea id="news-content" required rows="4"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none"></textarea>
+                            </div>
+                            <div class="flex gap-2 pt-2">
+                                <button type="submit"
+                                    class="flex-1 py-2 bg-[#0F3D2E] text-white rounded-lg hover:bg-[#145A44] transition">
+                                    Simpan
+                                </button>
+                                <button type="button" id="reset-btn"
+                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+                                    Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- News List -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                            <h3 class="text-xl font-bold text-gray-800">Daftar Berita</h3>
+                            <span id="total-news" class="bg-[#0F3D2E] text-white text-xs px-3 py-1 rounded-full">0
+                                Berita</span>
+                        </div>
+                        <div id="admin-news-list" class="divide-y divide-gray-100">
+                            <!-- Items will be injected here -->
+                            <div class="p-8 text-center text-gray-500">Belum ada berita.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div id="section-gallery" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Form Add Photo -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 sticky top-6">
+                        <h3 class="text-xl font-bold mb-6 text-gray-800 border-b pb-2">
+                            <span>Tambah Foto</span>
+                        </h3>
+                        <form id="gallery-form" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">URL Foto</label>
+                                <input type="text" id="gallery-image" required
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none"
+                                    placeholder="https://... atau assets/...">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (Alt
+                                    Text)</label>
+                                <input type="text" id="gallery-caption" required
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none"
+                                    placeholder="Contoh: Kegiatan Santri">
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit"
+                                    class="w-full py-2 bg-[#0F3D2E] text-white rounded-lg hover:bg-[#145A44] transition">
+                                    Tambah Foto
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Photo List -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                            <h3 class="text-xl font-bold text-gray-800">Daftar Foto Galeri</h3>
+                            <span id="total-gallery" class="bg-[#0F3D2E] text-white text-xs px-3 py-1 rounded-full">0
+                                Foto</span>
+                        </div>
+                        <div id="admin-gallery-list" class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+                            <!-- Photos will be injected here -->
+                            <div class="col-span-full text-center text-gray-500 py-8">Belum ada foto.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginSection = document.getElementById('login-section');
+            const dashboardSection = document.getElementById('dashboard-section');
+            const loginForm = document.getElementById('login-form');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            // News Elements
+            const newsForm = document.getElementById('news-form');
+            const newsList = document.getElementById('admin-news-list');
+            const resetBtn = document.getElementById('reset-btn');
+
+            // Gallery Elements
+            const galleryForm = document.getElementById('gallery-form');
+            const galleryList = document.getElementById('admin-gallery-list');
+
+            // --- Authentication ---
+            if (localStorage.getItem('adminLoggedIn') === 'true') {
+                showDashboard();
+            }
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const u = document.getElementById('username').value;
+                const p = document.getElementById('password').value;
+
+                if (u === 'admin' && p === 'admin123') {
+                    localStorage.setItem('adminLoggedIn', 'true');
+                    showDashboard();
+                } else {
+                    document.getElementById('login-error').classList.remove('hidden');
+                }
+            });
+
+            logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('adminLoggedIn');
+                location.reload();
+            });
+
+            function showDashboard() {
+                loginSection.classList.add('hidden');
+                dashboardSection.classList.remove('hidden');
+                renderNewsList();
+                renderGalleryList();
+            }
+
+            // --- Tab Switching ---
+            window.switchTab = function (tabName) {
+                const newsSection = document.getElementById('section-news');
+                const gallerySection = document.getElementById('section-gallery');
+                const tabNews = document.getElementById('tab-news');
+                const tabGallery = document.getElementById('tab-gallery');
+
+                if (tabName === 'news') {
+                    newsSection.classList.remove('hidden');
+                    gallerySection.classList.add('hidden');
+                    tabNews.classList.add('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
+                    tabNews.classList.remove('text-gray-400');
+                    tabGallery.classList.remove('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
+                    tabGallery.classList.add('text-gray-400');
+                } else {
+                    newsSection.classList.add('hidden');
+                    gallerySection.classList.remove('hidden');
+                    tabGallery.classList.add('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
+                    tabGallery.classList.remove('text-gray-400');
+                    tabNews.classList.remove('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
+                    tabNews.classList.add('text-gray-400');
+                }
+            };
+
+
+            // --- NEWS CRUD ---
+            const defaultNews = [
+                {
+                    id: 1,
+                    title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
+                    date: "2025-01-15",
+                    image: "assets/1.jpg",
+                    content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
+                },
+                {
+                    id: 2,
+                    title: "Kegiatan Bakti Sosial Santri",
+                    date: "2024-12-20",
+                    image: "assets/2.JPG",
+                    content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
+                },
+                {
+                    id: 3,
+                    title: "Prestasi Santri di Tingkat Nasional",
+                    date: "2024-11-10",
+                    image: "assets/3.JPG",
+                    content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
+                }
+            ];
+
+            function getNews() {
+                const data = localStorage.getItem('newsData');
+                if (!data) {
+                    localStorage.setItem('newsData', JSON.stringify(defaultNews));
+                    return defaultNews;
+                }
+                return JSON.parse(data);
+            }
+
+            function saveNews(news) {
+                localStorage.setItem('newsData', JSON.stringify(news));
+                renderNewsList();
+            }
+
+            function renderNewsList() {
+                const news = getNews();
+                document.getElementById('total-news').textContent = `${news.length} Berita`;
+
+                if (news.length === 0) {
+                    newsList.innerHTML = '<div class="p-8 text-center text-gray-500">Belum ada berita.</div>';
+                    return;
+                }
+
+                newsList.innerHTML = news.map(item => `
+                    <div class="p-4 hover:bg-gray-50 transition flex flex-col sm:flex-row gap-4">
+                        <img src="${item.image}" class="w-24 h-24 object-cover rounded-lg bg-gray-200 flex-shrink-0">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-gray-800 mb-1">${item.title}</h4>
+                            <p class="text-xs text-gray-500 mb-2">${item.date}</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">${item.content}</p>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 justify-center">
+                            <button onclick="editNews(${item.id})" class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="deleteNews(${item.id})" class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            newsForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const id = document.getElementById('news-id').value;
+                const title = document.getElementById('news-title').value;
+                const date = document.getElementById('news-date').value;
+                const image = document.getElementById('news-image').value;
+                const content = document.getElementById('news-content').value;
+
+                let news = getNews();
+
+                if (id) {
+                    // Update
+                    const index = news.findIndex(n => n.id == id);
+                    if (index !== -1) {
+                        news[index] = { ...news[index], title, date, image, content };
+                    }
+                } else {
+                    // Create
+                    const newId = news.length > 0 ? Math.max(...news.map(n => n.id)) + 1 : 1;
+                    news.unshift({ id: newId, title, date, image, content });
+                }
+
+                saveNews(news);
+                resetForm();
+                alert('Berita berhasil disimpan!');
+            });
+
+            resetBtn.addEventListener('click', resetForm);
+
+            function resetForm() {
+                newsForm.reset();
+                document.getElementById('news-id').value = '';
+                document.getElementById('form-title').textContent = 'Tambah Berita';
+            }
+
+            window.editNews = function (id) {
+                const news = getNews();
+                const item = news.find(n => n.id == id);
+                if (item) {
+                    document.getElementById('news-id').value = item.id;
+                    document.getElementById('news-title').value = item.title;
+                    document.getElementById('news-date').value = item.date;
+                    document.getElementById('news-image').value = item.image;
+                    document.getElementById('news-content').value = item.content;
+                    document.getElementById('form-title').textContent = 'Edit Berita';
+                    // Switch to existing tab if needed, though this edit function assumes we are on news tab
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            };
+
+            window.deleteNews = function (id) {
+                if (confirm('Apakah Anda yakin ingin menghapus berita ini?')) {
+                    let news = getNews();
+                    news = news.filter(n => n.id != id);
+                    saveNews(news);
+                }
+            };
+
+
+            // --- GALLERY CRUD ---
+            // Default images from original Gallery.html
+            const defaultGallery = [
+                { id: 1, url: 'assets/1.jpg', caption: 'Kegiatan' },
+                { id: 2, url: 'assets/4.jpg', caption: 'Kegiatan' },
+                { id: 3, url: 'assets/12.jpg', caption: 'Gedung Sekolah' },
+                { id: 4, url: 'assets/5.jpg', caption: 'Kegiatan' },
+                { id: 5, url: 'assets/2.jpg', caption: 'Kegiatan' },
+                { id: 6, url: 'assets/11.jpg', caption: 'Lab Komputer' },
+                { id: 7, url: 'assets/13.jpg', caption: 'Halaman Sekolah' },
+                { id: 8, url: 'assets/3.jpg', caption: 'Kegiatan' },
+                { id: 9, url: 'assets/6.jpg', caption: 'Karya Siswa' },
+                { id: 10, url: 'assets/10.jpg', caption: 'Kantin Sekolah' },
+                { id: 11, url: 'assets/9.jpg', caption: 'Taman Sekolah' },
+                { id: 12, url: 'assets/8.jpg', caption: 'Gedung Sekolah' }
+            ];
+
+            function getGallery() {
+                const data = localStorage.getItem('galleryData');
+                if (!data) {
+                    localStorage.setItem('galleryData', JSON.stringify(defaultGallery));
+                    return defaultGallery;
+                }
+                return JSON.parse(data);
+            }
+
+            function saveGallery(items) {
+                localStorage.setItem('galleryData', JSON.stringify(items));
+                renderGalleryList();
+            }
+
+            function renderGalleryList() {
+                const items = getGallery();
+                document.getElementById('total-gallery').textContent = `${items.length} Foto`;
+
+                if (items.length === 0) {
+                    galleryList.innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">Belum ada foto.</div>';
+                    return;
+                }
+
+                galleryList.innerHTML = items.map(item => `
+                    <div class="relative group rounded-lg overflow-hidden border border-gray-200">
+                        <img src="${item.url}" alt="${item.caption}" class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="deletePhoto(${item.id})" class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="p-2 bg-white text-xs text-gray-600 truncate">${item.caption}</div>
+                    </div>
+                `).join('');
+            }
+
+            galleryForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const url = document.getElementById('gallery-image').value;
+                const caption = document.getElementById('gallery-caption').value;
+
+                let items = getGallery();
+                const newId = items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1;
+
+                items.unshift({ id: newId, url, caption });
+                saveGallery(items);
+
+                galleryForm.reset();
+                alert('Foto berhasil ditambahkan!');
+            });
+
+            window.deletePhoto = function (id) {
+                if (confirm('Hapus foto ini dari galeri?')) {
+                    let items = getGallery();
+                    items = items.filter(i => i.id != id);
+                    saveGallery(items);
+                }
+            };
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,36 +1,105 @@
 /* Theme - Islamic Elegant Green */
 :root {
-    --primary: #0F3D2E; /* Hijau Emerald Gelap */
+    --primary: #0F3D2E;
+    /* Hijau Emerald Gelap */
     --primary-dark: #0A2A1F;
-    --primary-hover: #145A44; /* Hijau lebih terang untuk hover */
-    --text: #F9FAFB; /* Teks navbar putih lembut */
-    --text-main: #1F2937; /* Teks utama hitam soft */
-    --text-secondary: #6B7280; /* Teks sekunder abu lembut */
-    --gold: #C9A24D; /* Gold lembut */
-    --light: #FFFFFF; /* Putih bersih */
-    --ink: #1F2937; /* Hitam soft */
-    --background: #FFFFFF; /* Background utama putih bersih */
+    --primary-hover: #145A44;
+    /* Hijau lebih terang untuk hover */
+    --primary-soft: #E8F5E9;
+    /* Hijau sangat muda untuk background */
+    --primary-light: #C8E6C9;
+    /* Hijau muda */
+    --text: #F9FAFB;
+    /* Teks navbar putih lembut */
+    --text-main: #1F2937;
+    /* Teks utama hitam soft */
+    --text-secondary: #6B7280;
+    /* Teks sekunder abu lembut */
+    --gold: #C9A24D;
+    /* Gold lembut */
+    --light: #FFFFFF;
+    /* Putih bersih */
+    --ink: #1F2937;
+    /* Hitam soft */
+    --background: #F0FDF4;
+    /* Background utama hijau sangat muda (mint soft) */
+    --gradient-soft: linear-gradient(135deg, #F0FDF4 0%, #E8F5E9 100%);
+    --gradient-card: linear-gradient(145deg, #ffffff, #f3f4f6);
 }
 
 /* Default styles */
 body {
-    background: var(--background);
+    background: var(--gradient-soft);
     color: var(--text-main);
     font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Wave Separator */
+.wave-separator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave-separator svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+.wave-separator .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* Section Backgrounds */
+.bg-soft-green {
+    background: linear-gradient(180deg, #F0FDF4 0%, #DCFCE7 100%);
+}
+
+.bg-mint-cream {
+    background-color: #F5FFFA;
+}
+
+.bg-emerald-50 {
+    background-color: #ECFDF5;
 }
 
 /* Section helpers */
-.section-primary { background-color: var(--primary); color: var(--text); }
-.section-light { background-color: var(--light); color: var(--ink); }
-.section-ink { background-color: var(--ink); color: var(--text); }
-.accent-gold { color: var(--gold); }
-.divider-gold { background: linear-gradient(90deg, transparent, var(--gold), transparent); height: 1px; }
+.section-primary {
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+.section-light {
+    background-color: var(--light);
+    color: var(--ink);
+}
+
+.section-ink {
+    background-color: var(--ink);
+    color: var(--text);
+}
+
+.accent-gold {
+    color: var(--gold);
+}
+
+.divider-gold {
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    height: 1px;
+}
 
 
-      
-      
+
+
 .logo-animate {
-        transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .logo-animate:hover {
@@ -48,7 +117,7 @@ body {
 }
 
 .mobile-nav-link {
-        position: relative;
+    position: relative;
     transition: all 0.3s ease;
     overflow: hidden;
 }
@@ -65,16 +134,16 @@ body {
 
 /* Hamburger Animation */
 .hamburger {
-        transition: all 0.3s ease;
-      }
-      
+    transition: all 0.3s ease;
+}
+
 .hamburger:hover {
     transform: rotate(90deg);
 }
 
 /* Shimmer Effect */
 .shimmer-effect {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
 }
@@ -115,7 +184,8 @@ body {
 /* Beautiful Default Navbar - Modern & Elegant */
 .default-navbar {
     position: relative;
-    background: rgba(15, 61, 46, 0.95); /* Hijau Emerald Gelap dengan transparansi */
+    background: rgba(15, 61, 46, 0.95);
+    /* Hijau Emerald Gelap dengan transparansi */
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(201, 162, 77, 0.15);
@@ -132,11 +202,10 @@ body {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(201, 162, 77, 0.4) 50%, 
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(201, 162, 77, 0.4) 50%,
+            transparent 100%);
     opacity: 0.6;
 }
 
@@ -161,11 +230,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, 
-        rgba(59, 130, 246, 0.1) 0%, 
-        rgba(96, 165, 250, 0.2) 50%, 
-        rgba(59, 130, 246, 0.1) 100%
-    );
+    background: linear-gradient(45deg,
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(96, 165, 250, 0.2) 50%,
+            rgba(59, 130, 246, 0.1) 100%);
     animation: geometricShift 8s ease-in-out infinite;
 }
 
@@ -177,13 +245,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 25% 25%, 
-        rgba(59, 130, 246, 0.2) 0%, 
-        transparent 50%
-    ), radial-gradient(circle at 75% 75%, 
-        rgba(251, 191, 36, 0.2) 0%, 
-        transparent 50%
-    );
+    background: radial-gradient(circle at 25% 25%,
+            rgba(59, 130, 246, 0.2) 0%,
+            transparent 50%), radial-gradient(circle at 75% 75%,
+            rgba(251, 191, 36, 0.2) 0%,
+            transparent 50%);
     animation: hexRotate 10s linear infinite;
 }
 
@@ -211,11 +277,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, 
-        rgba(59, 130, 246, 0.1) 0%, 
-        rgba(96, 165, 250, 0.15) 50%, 
-        rgba(59, 130, 246, 0.1) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(96, 165, 250, 0.15) 50%,
+            rgba(59, 130, 246, 0.1) 100%);
     border-radius: 0 0 30px 30px;
     animation: curvedPulse 6s ease-in-out infinite;
 }
@@ -228,34 +293,61 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(59, 130, 246, 0.2) 30%, 
-        rgba(96, 165, 250, 0.3) 60%, 
-        rgba(59, 130, 246, 0.2) 85%, 
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(59, 130, 246, 0.2) 30%,
+            rgba(96, 165, 250, 0.3) 60%,
+            rgba(59, 130, 246, 0.2) 85%,
+            transparent 100%);
     animation: stepFlow 5s ease-in-out infinite;
 }
 
 @keyframes geometricShift {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    50% { transform: translateX(10px) rotate(1deg); }
+
+    0%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateX(10px) rotate(1deg);
+    }
 }
 
 @keyframes hexRotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes curvedPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.02); }
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
 }
 
 @keyframes stepFlow {
-    0%, 100% { transform: translateX(-100%); }
-    50% { transform: translateX(100%); }
+
+    0%,
+    100% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(100%);
+    }
 }
 
 .oval-navbar::before {
@@ -265,12 +357,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at center, 
-        rgba(59, 130, 246, 0.1) 0%, 
-        rgba(96, 165, 250, 0.2) 30%, 
-        rgba(251, 191, 36, 0.1) 60%, 
-        transparent 100%
-    );
+    background: radial-gradient(ellipse at center,
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(96, 165, 250, 0.2) 30%,
+            rgba(251, 191, 36, 0.1) 60%,
+            transparent 100%);
     animation: ovalGlow 6s ease-in-out infinite;
 }
 
@@ -282,22 +373,24 @@ body {
     transform: translateX(-50%);
     width: 80%;
     height: 4px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(59, 130, 246, 0.5) 25%, 
-        rgba(96, 165, 250, 0.8) 50%, 
-        rgba(59, 130, 246, 0.5) 75%, 
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(59, 130, 246, 0.5) 25%,
+            rgba(96, 165, 250, 0.8) 50%,
+            rgba(59, 130, 246, 0.5) 75%,
+            transparent 100%);
     border-radius: 2px;
     animation: ovalPulse 3s ease-in-out infinite;
 }
 
 @keyframes ovalGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.3;
         transform: scale(1);
     }
+
     50% {
         opacity: 0.6;
         transform: scale(1.05);
@@ -305,10 +398,13 @@ body {
 }
 
 @keyframes ovalPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.5;
         transform: translateX(-50%) scaleX(1);
     }
+
     50% {
         opacity: 1;
         transform: translateX(-50%) scaleX(1.2);
@@ -333,36 +429,34 @@ body {
 }
 
 .oval-navbar-scroll::before {
-    background: radial-gradient(ellipse at center, 
-        rgba(59, 130, 246, 0.2) 0%, 
-        rgba(96, 165, 250, 0.3) 30%, 
-        rgba(251, 191, 36, 0.2) 60%, 
-        transparent 100%
-    );
+    background: radial-gradient(ellipse at center,
+            rgba(59, 130, 246, 0.2) 0%,
+            rgba(96, 165, 250, 0.3) 30%,
+            rgba(251, 191, 36, 0.2) 60%,
+            transparent 100%);
     animation-duration: 4s;
 }
 
 .oval-navbar-scroll::after {
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(59, 130, 246, 0.7) 25%, 
-        rgba(96, 165, 250, 1) 50%, 
-        rgba(59, 130, 246, 0.7) 75%, 
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(59, 130, 246, 0.7) 25%,
+            rgba(96, 165, 250, 1) 50%,
+            rgba(59, 130, 246, 0.7) 75%,
+            transparent 100%);
     animation-duration: 2s;
 }
 
 /* Floating Wave Particles */
 .wave-particles {
-        position: absolute;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 30px;
-        pointer-events: none;
-      }
-      
+    pointer-events: none;
+}
+
 .wave-particle {
     position: absolute;
     bottom: 0;
@@ -398,10 +492,13 @@ body {
 }
 
 @keyframes particleFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) scale(1);
         opacity: 0.6;
     }
+
     50% {
         transform: translateY(-20px) scale(1.2);
         opacity: 1;
@@ -419,6 +516,7 @@ body {
     width: 125px;
     height: 32px;
 }
+
 .nav-deco::before,
 .nav-deco::after {
     content: '';
@@ -428,8 +526,16 @@ body {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
-.nav-deco::before { top: 8px; opacity: 0.4; }
-.nav-deco::after { bottom: 8px; opacity: 0.2; }
+
+.nav-deco::before {
+    top: 8px;
+    opacity: 0.4;
+}
+
+.nav-deco::after {
+    bottom: 8px;
+    opacity: 0.2;
+}
 
 /* Navbar Link Hover - Modern */
 .nav-btn {
@@ -533,9 +639,12 @@ footer .social-link:hover {
 
 /* Floating Animation for Logo */
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-5px);
     }
@@ -552,20 +661,29 @@ footer .social-link:hover {
    Width stays auto to preserve aspect ratio.
 */
 .logo-as {
-    height: 6rem; /* ~96px default */
+    height: 6rem;
+    /* ~96px default */
     width: auto;
     display: inline-block;
     vertical-align: middle;
-    transition: height 0.35s cubic-bezier(.2,.8,.2,1);
+    transition: height 0.35s cubic-bezier(.2, .8, .2, 1);
     object-fit: contain;
 }
 
 @media (min-width: 768px) {
-    .logo-as { height: 8rem; } /* ~128px on medium screens */
+    .logo-as {
+        height: 8rem;
+    }
+
+    /* ~128px on medium screens */
 }
 
 @media (min-width: 1024px) {
-    .logo-as { height: 10rem; } /* ~160px on large screens */
+    .logo-as {
+        height: 10rem;
+    }
+
+    /* ~160px on large screens */
 }
 
 /* Gradient Border Animation */
@@ -573,15 +691,19 @@ footer .social-link:hover {
     0% {
         border-color: rgba(59, 130, 246, 0.3);
     }
+
     25% {
         border-color: rgba(251, 191, 36, 0.3);
     }
+
     50% {
         border-color: rgba(236, 72, 153, 0.3);
     }
+
     75% {
         border-color: rgba(34, 197, 94, 0.3);
     }
+
     100% {
         border-color: rgba(59, 130, 246, 0.3);
     }
@@ -604,20 +726,22 @@ footer .social-link:hover {
     left: -50%;
     width: 200%;
     height: 100%;
-    background: linear-gradient(45deg, 
-        rgba(251, 191, 36, 0.1), 
-        rgba(59, 130, 246, 0.1), 
-        rgba(236, 72, 153, 0.1), 
-        rgba(34, 197, 94, 0.1)
-    );
+    background: linear-gradient(45deg,
+            rgba(251, 191, 36, 0.1),
+            rgba(59, 130, 246, 0.1),
+            rgba(236, 72, 153, 0.1),
+            rgba(34, 197, 94, 0.1));
     animation: gradientShift 10s ease-in-out infinite;
     z-index: -1;
 }
 
 @keyframes gradientShift {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateX(0) rotate(0deg);
     }
+
     50% {
         transform: translateX(50%) rotate(180deg);
     }
@@ -634,7 +758,7 @@ footer .social-link:hover {
     .navbar-animate {
         animation-duration: 0.4s;
     }
-    
+
     .logo-animate img {
         height: 3rem;
     }
@@ -657,4 +781,3 @@ footer .social-link:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #B8903A;
 }
-

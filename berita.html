@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="assets/asrama.png" type="image/png">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <title>Al-Kautsar - Berita Terkini</title>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <div class="relative w-full h-[80px]">
+        <header id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full default-navbar navbar-animate">
+            <nav aria-label="Global"
+                class="flex items-center justify-between px-4 md:px-6 lg:px-8 py-3 container mx-auto max-w-7xl">
+                <!-- Logo/Brand -->
+                <div class="flex items-center gap-3">
+                    <a href="Index.html" class="flex items-center gap-2 group">
+                        <img src="assets/LogoAS.png" alt="Al-Kautsar"
+                            class="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105">
+                        <span class="hidden sm:block text-white font-semibold text-lg tracking-tight">Al-Kautsar</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button dengan Animasi Modern -->
+                <div class="flex lg:hidden">
+                    <button id="mobile-menu-btn" type="button"
+                        class="relative inline-flex items-center justify-center p-2.5 text-white rounded-lg bg-[#145A44]/80 hover:bg-[#145A44] backdrop-blur-sm border border-[#C9A24D]/20 transition-all duration-300 group">
+                        <span class="sr-only">Open main menu</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="size-6 transition-transform duration-300 group-hover:rotate-90">
+                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation dengan Animasi Modern -->
+                <div class="hidden lg:flex lg:items-center lg:gap-x-1">
+                    <a href="Index.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
+                        <span class="relative z-10">Home</span>
+                    </a>
+                    <a href="profil.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
+                        <span class="relative z-10">Profil</span>
+                    </a>
+                    <a href="Gallery.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
+                        <span class="relative z-10">Galery</span>
+                    </a>
+                    <a href="berita.html" class="nav-btn active text-sm font-medium text-gold hover:text-white">
+                        <span class="relative z-10">Berita</span>
+                    </a>
+                    <a href="kontak.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
+                        <span class="relative z-10">Contact</span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex lg:items-center lg:ml-6">
+                    <a href="https://linktr.ee/psbalkautsar" target="_blank"
+                        class="relative px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium text-sm rounded-lg border border-white/20 hover:border-[#C9A24D]/40 transition-all duration-300 group overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <span>Daftar</span>
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6">
+                                </path>
+                            </svg>
+                        </span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-[#C9A24D]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu dengan Animasi Modern -->
+                <div id="mobile-menu-overlay"
+                    class="fixed inset-0 bg-black/60 backdrop-blur-md z-40 hidden lg:hidden transition-opacity duration-300">
+                    <div id="mobile-menu"
+                        class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-[#0F3D2E]/98 backdrop-blur-xl shadow-2xl transform translate-x-full transition-transform duration-300 ease-out">
+                        <div class="flex flex-col h-full">
+                            <!-- Mobile Menu Header -->
+                            <div class="flex items-center justify-between p-6 border-b border-white/10">
+                                <div class="flex items-center gap-3">
+                                    <img src="assets/LogoAS.png" alt="Al-Kautsar" class="h-8 w-auto">
+                                    <span class="text-white font-semibold text-lg">Menu</span>
+                                </div>
+                                <button id="close-mobile-menu" type="button"
+                                    class="rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200">
+                                    <span class="sr-only">Close menu</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        class="h-6 w-6">
+                                        <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Mobile Menu Navigation -->
+                            <div class="flex-1 px-6 py-8 overflow-y-auto">
+                                <nav class="space-y-2">
+                                    <a href="Index.html"
+                                        class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 text-white rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#C9A24D]/20 transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Home</span>
+                                    </a>
+                                    <a href="profil.html"
+                                        class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 text-white rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#C9A24D]/20 transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Profil</span>
+                                    </a>
+                                    <a href="Gallery.html"
+                                        class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 text-white rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#C9A24D]/20 transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Galery</span>
+                                    </a>
+                                    <a href="berita.html"
+                                        class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 text-white rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#C9A24D]/20 transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Berita</span>
+                                    </a>
+                                    <a href="kontak.html"
+                                        class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 text-white rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#C9A24D]/20 transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Contact</span>
+                                    </a>
+                                    <a href="https://linktr.ee/psbalkautsar" target="_blank"
+                                        class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 mt-4 bg-white/10 hover:bg-[#C9A24D]/20 text-white rounded-xl border border-white/20 transition-all duration-200 group">
+                                        <span class="font-medium">Daftar</span>
+                                        <svg class="w-4 h-4 ml-auto transition-transform duration-300 group-hover:translate-x-1"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                        </svg>
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <!-- Mobile Menu Footer -->
+                            <div class="p-6 border-t border-white/10">
+                                <div class="text-center text-white/60 text-sm">
+                                    <p>© 2024 Al-Kautsar</p>
+                                    <p class="mt-1 text-xs">Pendidikan Islam Terpadu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Hero Section with Wave -->
+    <section class="relative pt-12 pb-24 lg:pt-20 lg:pb-32 bg-soft-green overflow-hidden">
+        <!-- Background Elements Removed -->
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#1F2937] mb-4" data-aos="fade-down">Berita Terkini</h1>
+            <div class="w-24 h-1 bg-[#C9A24D] rounded-full mx-auto mb-6" data-aos="fade-up"></div>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Informasi terbaru seputar kegiatan, prestasi, dan perkembangan Asrama Al-Kautsar
+            </p>
+        </div>
+
+        <!-- Wave Separator -->
+        <div class="wave-separator">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill" fill="#F9FAFB"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-12 relative z-10 -mt-20">
+        <!-- News Grid -->
+        <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- News items will be injected here by JS -->
+            <div class="col-span-full text-center py-20 text-gray-500">
+                <p>Memuat berita...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="relative bg-[#0F3D2E] text-center py-12 text-white overflow-hidden mt-auto">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-4">
+            <div class="mb-6">
+                <img src="assets/Asrama1.png" alt="Logo Al-Kautsar"
+                    class="h-12 rounded-full w-auto mx-auto mb-4 transform hover:scale-110 transition-transform duration-300">
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Asrama IX Al-Kautsar</h3>
+            <p class="text-base text-white/90 mb-6 max-w-2xl mx-auto">
+                Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.
+            </p>
+            <div class="w-24 h-0.5 bg-white/30 mx-auto mb-6"></div>
+            <p class="text-sm text-white/70">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu functionality (copied from Index.html logic)
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-menu-overlay');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu && mobileOverlay) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    mobileMenu.classList.remove('translate-x-full');
+                    mobileOverlay.classList.remove('hidden');
+                });
+            }
+
+            if (closeMobileMenu && mobileMenu && mobileOverlay) {
+                closeMobileMenu.addEventListener('click', function () {
+                    mobileMenu.classList.add('translate-x-full');
+                    mobileOverlay.classList.add('hidden');
+                });
+            }
+
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', function () {
+                    if (mobileMenu) {
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileOverlay.classList.add('hidden');
+                    }
+                });
+            }
+
+
+            const container = document.getElementById('news-container');
+            // Mock data if empty
+            const defaultNews = [
+                {
+                    id: 1,
+                    title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
+                    date: "2025-01-15",
+                    image: "assets/1.jpg",
+                    content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
+                },
+                {
+                    id: 2,
+                    title: "Kegiatan Bakti Sosial Santri",
+                    date: "2024-12-20",
+                    image: "assets/2.JPG",
+                    content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
+                },
+                {
+                    id: 3,
+                    title: "Prestasi Santri di Tingkat Nasional",
+                    date: "2024-11-10",
+                    image: "assets/3.JPG",
+                    content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
+                }
+            ];
+
+            let newsData = JSON.parse(localStorage.getItem('newsData')) || defaultNews;
+
+            // Save default if empty
+            if (!localStorage.getItem('newsData')) {
+                localStorage.setItem('newsData', JSON.stringify(newsData));
+            }
+
+            if (newsData.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500">Belum ada berita.</div>';
+                return;
+            }
+
+            container.innerHTML = newsData.map(news => `
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
+                        <div class="absolute top-0 right-0 bg-[#C9A24D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                            ${new Date(news.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-[#1F2937] mb-3 line-clamp-2 hover:text-[#0F3D2E] transition-colors">
+                            <a href="#">${news.title}</a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            ${news.content}
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <a href="#" class="inline-flex items-center text-[#0F3D2E] font-medium hover:text-[#C9A24D] transition-colors">
+                                Baca Selengkapnya 
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            // Re-init AOS if needed
+            if (typeof AOS !== 'undefined') AOS.init();
+        });
+    </script>
+</body>
+
+</html>
