@@ -72,7 +72,7 @@
                     </a>
                 </div>
                 <div class="hidden lg:flex lg:items-center lg:ml-6">
-                    <a href="https://linktr.ee/psbalkautsar" target="_blank"
+                    <a href="pendaftaran.html"
                         class="relative px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium text-sm rounded-lg border border-white/20 hover:border-[#C9A24D]/40 transition-all duration-300 group overflow-hidden">
                         <span class="relative z-10 flex items-center gap-2">
                             <span>Daftar</span>
@@ -173,7 +173,7 @@
                                         </div>
                                         <span class="font-medium">Contact</span>
                                     </a>
-                                    <a href="https://linktr.ee/psbalkautsar" target="_blank"
+                                    <a href="pendaftaran.html"
                                         class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 mt-4 bg-white/10 hover:bg-[#C9A24D]/20 text-white rounded-xl border border-white/20 transition-all duration-200 group">
                                         <span class="font-medium">Daftar</span>
                                         <svg class="w-4 h-4 ml-auto transition-transform duration-300 group-hover:translate-x-1"
@@ -233,6 +233,60 @@
         </div>
     </main>
 
+    <!-- News Detail Modal -->
+    <div id="news-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300 scale-95"
+            id="modal-content">
+            <!-- Modal Header -->
+            <div
+                class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
+                <h2 class="text-2xl font-bold text-[#1F2937]">Detail Berita</h2>
+                <button onclick="closeNewsModal()"
+                    class="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-full">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 md:p-8">
+                <!-- News Image -->
+                <div class="mb-6 rounded-xl overflow-hidden shadow-lg">
+                    <img id="modal-image" src="" alt="" class="w-full h-64 md:h-96 object-cover">
+                </div>
+
+                <!-- News Date -->
+                <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span id="modal-date"></span>
+                </div>
+
+                <!-- News Title -->
+                <h3 id="modal-title" class="text-3xl md:text-4xl font-bold text-[#1F2937] mb-6 leading-tight"></h3>
+
+                <!-- News Content -->
+                <div id="modal-content-text" class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                    <!-- Content will be injected here -->
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="sticky bottom-0 bg-gray-50 px-6 py-4 border-t border-gray-200">
+                <button onclick="closeNewsModal()"
+                    class="w-full md:w-auto px-6 py-3 bg-[#0F3D2E] hover:bg-[#145A44] text-white font-medium rounded-lg transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
 
     <footer class="relative bg-[#0F3D2E] text-center py-12 text-white overflow-hidden mt-auto">
@@ -290,35 +344,41 @@
 
 
             const container = document.getElementById('news-container');
-            // Mock data if empty
-            const defaultNews = [
-                {
-                    id: 1,
-                    title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
-                    date: "2025-01-15",
-                    image: "assets/1.jpg",
-                    content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
-                },
-                {
-                    id: 2,
-                    title: "Kegiatan Bakti Sosial Santri",
-                    date: "2024-12-20",
-                    image: "assets/2.JPG",
-                    content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
-                },
-                {
-                    id: 3,
-                    title: "Prestasi Santri di Tingkat Nasional",
-                    date: "2024-11-10",
-                    image: "assets/3.JPG",
-                    content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
-                }
-            ];
 
-            let newsData = JSON.parse(localStorage.getItem('newsData')) || defaultNews;
+            // Get news data from localStorage
+            let newsData = [];
+            const storedData = localStorage.getItem('newsData');
 
-            // Save default if empty
-            if (!localStorage.getItem('newsData')) {
+            if (storedData) {
+                // If data exists in localStorage, use it
+                newsData = JSON.parse(storedData);
+            } else {
+                // Only set default news on FIRST VISIT (when localStorage is null)
+                // This prevents resetting when admin deletes all news
+                const defaultNews = [
+                    {
+                        id: 1,
+                        title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
+                        date: "2025-01-15",
+                        image: "assets/1.jpg",
+                        content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
+                    },
+                    {
+                        id: 2,
+                        title: "Kegiatan Bakti Sosial Santri",
+                        date: "2024-12-20",
+                        image: "assets/2.JPG",
+                        content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
+                    },
+                    {
+                        id: 3,
+                        title: "Prestasi Santri di Tingkat Nasional",
+                        date: "2024-11-10",
+                        image: "assets/3.JPG",
+                        content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
+                    }
+                ];
+                newsData = defaultNews;
                 localStorage.setItem('newsData', JSON.stringify(newsData));
             }
 
@@ -329,24 +389,24 @@
 
             container.innerHTML = newsData.map(news => `
                 <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100">
-                    <div class="h-48 overflow-hidden relative">
+                    <div class="h-48 overflow-hidden relative cursor-pointer" onclick="openNewsModal(${news.id})">
                         <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
                         <div class="absolute top-0 right-0 bg-[#C9A24D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                             ${new Date(news.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-[#1F2937] mb-3 line-clamp-2 hover:text-[#0F3D2E] transition-colors">
-                            <a href="#">${news.title}</a>
+                        <h3 class="text-xl font-bold text-[#1F2937] mb-3 line-clamp-2 hover:text-[#0F3D2E] transition-colors cursor-pointer" onclick="openNewsModal(${news.id})">
+                            ${news.title}
                         </h3>
                         <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                             ${news.content}
                         </p>
                         <div class="mt-auto pt-4 border-t border-gray-100">
-                            <a href="#" class="inline-flex items-center text-[#0F3D2E] font-medium hover:text-[#C9A24D] transition-colors">
+                            <button onclick="openNewsModal(${news.id})" class="inline-flex items-center text-[#0F3D2E] font-medium hover:text-[#C9A24D] transition-colors">
                                 Baca Selengkapnya 
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -354,6 +414,81 @@
 
             // Re-init AOS if needed
             if (typeof AOS !== 'undefined') AOS.init();
+        });
+
+        // Modal Functions
+        function openNewsModal(newsId) {
+            const newsData = JSON.parse(localStorage.getItem('newsData')) || [];
+            const news = newsData.find(n => n.id === newsId);
+
+            if (!news) return;
+
+            // Populate modal with news data
+            document.getElementById('modal-image').src = news.image;
+            document.getElementById('modal-image').alt = news.title;
+            document.getElementById('modal-title').textContent = news.title;
+            document.getElementById('modal-date').textContent = new Date(news.date).toLocaleDateString('id-ID', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+
+            // Format content with paragraphs
+            const contentHtml = news.content.split('\n').map(para =>
+                para.trim() ? `<p class="mb-4">${para}</p>` : ''
+            ).join('');
+            document.getElementById('modal-content-text').innerHTML = contentHtml || `<p>${news.content}</p>`;
+
+            // Show modal with animation
+            const modal = document.getElementById('news-modal');
+            const modalContent = document.getElementById('modal-content');
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Reset scroll position to top
+            modalContent.scrollTop = 0;
+
+            // Trigger animation
+            setTimeout(() => {
+                modal.style.opacity = '1';
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNewsModal() {
+            const modal = document.getElementById('news-modal');
+            const modalContent = document.getElementById('modal-content');
+
+            // Animate out
+            modal.style.opacity = '0';
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('news-modal')?.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeNewsModal();
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeNewsModal();
+            }
         });
     </script>
     <script src="script.js"></script>
