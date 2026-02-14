@@ -20,6 +20,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/asrama.png" type="image/png">
   <link rel="stylesheet" href="stylesheet.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <title>Al-Kautsar - Galeri</title>
 </head>
 
@@ -57,7 +59,7 @@
         <a href="profil.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
           <span class="relative z-10">Profil</span>
         </a>
-        <a href="Gallery.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
+        <a href="Gallery.html" class="nav-btn active text-sm font-medium text-gold hover:text-white">
           <span class="relative z-10">Galery</span>
         </a>
         <a href="berita.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
@@ -198,17 +200,17 @@
       class="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
       <!-- Gambar / Logo Kiri -->
-      <div class="flex justify-center md:justify-start">
+      <div class="flex justify-center md:justify-start" data-aos="fade-right">
         <img src="assets/LogoAS.png" alt="Logo Al-Kautsar" class="h-16 md:h-80 w-auto object-contain">
       </div>
 
       <!-- Teks Kanan -->
       <div class="text-center md:text-left">
-        <h1 class="text-4xl md:text-5xl font-semibold mb-6 leading-tight text-[#1F2937]">
+        <h1 class="text-4xl md:text-5xl font-semibold mb-6 leading-tight text-[#1F2937]" data-aos="fade-down">
           Galeri Asrama
         </h1>
 
-        <p class="text-lg md:text-xl text-[#6B7280] mb-8 leading-relaxed">
+        <p class="text-lg md:text-xl text-[#6B7280] mb-8 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
           Kumpulan dokumentasi kegiatan santri Al-Kautsar yang menggambarkan aktivitas sehari-hari, prestasi, dan momen
           berharga di lingkungan asrama.
         </p>
@@ -231,6 +233,9 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Initialize AOS
+      if (typeof AOS !== 'undefined') AOS.init({ duration: 1000, once: true });
+
       // Default Data (Mirroring Admin for consistency)
       const defaultGallery = [
         { id: 1, url: 'assets/1.jpg', caption: 'Kegiatan' },

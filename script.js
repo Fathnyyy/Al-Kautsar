@@ -182,5 +182,27 @@ document.addEventListener('DOMContentLoaded', function() {
             handleScroll();
         }, 100);
     });
+
+    // Hero Image Slider
+    const heroImage = document.getElementById('hero-image');
+    if (heroImage) {
+        const images = ['assets/Asrama1.png', 'assets/logo DU (2).png'];
+        let currentIndex = 0;
+        
+        // Initial transition setup
+        heroImage.style.transition = 'opacity 0.5s ease-in-out';
+
+        setInterval(() => {
+             // Fade out
+            heroImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                heroImage.src = images[currentIndex];
+                // Fade in
+                heroImage.style.opacity = '1';
+            }, 500); // Wait for fade out to complete (matches transition duration)
+        }, 3000); // Change image every 3 seconds
+    }
 });
 
