@@ -29,16 +29,18 @@
   <!-- Navbar -->
   <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-  <div class="relative w-full h-screen bg-fixed">
+  <div class="relative w-full h-screen">
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full default-navbar navbar-animate">
       <nav aria-label="Global"
         class="flex items-center justify-between px-4 md:px-6 lg:px-8 py-5 container mx-auto max-w-7xl">
         <!-- Logo/Brand -->
         <div class="flex items-center gap-3">
           <a href="Index.html" class="flex items-center gap-2 group">
+            <img src="assets/logo du.png" alt="Darul Ulum"
+              class="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105">
             <img src="assets/LogoAS.png" alt="Al-Kautsar"
               class="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105">
-            <span class="hidden sm:block text-white font-semibold text-lg tracking-tight">Al-Kautsar</span>
+
           </a>
         </div>
 
@@ -65,7 +67,7 @@
           <a href="Gallery.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
             <span class="relative z-10">Galery</span>
           </a>
-          <a href="berita.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
+          <a href="#berita" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
             <span class="relative z-10">Berita</span>
           </a>
           <a href="kontak.html" class="nav-btn text-sm font-medium text-white/90 hover:text-white">
@@ -97,6 +99,7 @@
               <!-- Mobile Menu Header -->
               <div class="flex items-center justify-between p-6 border-b border-white/10">
                 <div class="flex items-center gap-3">
+                  <img src="assets/logo du.png" alt="Darul Ulum" class="h-8 w-auto">
                   <img src="assets/LogoAS.png" alt="Al-Kautsar" class="h-8 w-auto">
                   <span class="text-white font-semibold text-lg">Menu</span>
                 </div>
@@ -147,7 +150,7 @@
                     </div>
                     <span class="font-medium">Galery</span>
                   </a>
-                  <a href="berita.html"
+                  <a href="#berita"
                     class="mobile-nav-link flex items-center gap-3 px-4 py-3.5 text-white rounded-xl hover:bg-white/10 transition-all duration-200 group">
                     <div
                       class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#C9A24D]/20 transition-colors">
@@ -212,12 +215,12 @@
 
             <!-- Heading -->
             <h3 class="text-4xl md:text-5xl font-semibold text-[#1F2937] mb-4">
-              Religius, Berjiwa Kuat dan Kreatif.
+              Religius, Berakhlak Mulia dan Kreatif.
             </h3>
 
             <!-- Paragraf -->
             <p class="text-lg md:text-xl text-[#6B7280] leading-relaxed">
-              Asrama Al Kautsar membentuk generasi yang religius, berjiwa kuat, dan kreatif.
+              Asrama Al Kautsar membentuk generasi yang religius, berakhlak mulia, dan kreatif.
               Setiap santri dibimbing agar ketika lulus, mereka menjadi pribadi yang sukses dan bermanfaat bagi sesama.
             </p>
 
@@ -309,10 +312,10 @@
               </p>
             </div>
 
-            <!-- Berjiwa Kuat -->
+            <!-- Berakhlak Mulia -->
             <div
               class="bg-white border border-[#0F3D2E]/20 p-6 rounded-xl shadow-sm hover:shadow transition-all duration-200">
-              <h3 class="font-semibold text-[#1F2937] mb-3 text-center">Berjiwa Kuat</h3>
+              <h3 class="font-semibold text-[#1F2937] mb-3 text-center">Berakhlak Mulia</h3>
               <p class="text-[#6B7280] text-sm text-center leading-relaxed">
                 Pembentukan mental, kemandirian, kedisiplinan,
                 serta rasa tanggung jawab sosial.
@@ -354,90 +357,89 @@
     <!-- End Section Profil -->
 
 
-    <!-- Section Preview Galeri -->
-    <section class="w-full py-20 bg-emerald-50">
+    <!-- Section Berita -->
+    <section id="berita" class="w-full py-20 bg-emerald-50">
       <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-semibold mb-4 text-[#1F2937]">Galeri Kegiatan</h2>
-          <p class="text-[#6B7280] text-lg">Lihat beberapa momen kegiatan kami</p>
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold mb-4 text-[#1F2937]">Berita Terkini</h2>
+          <p class="text-[#6B7280] text-lg">Informasi terbaru seputar kegiatan dan prestasi</p>
         </div>
 
-        <!-- Gallery Pola Landscape-Portrait-Landscape -->
-        <div id="gallery-grid"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 overflow-hidden rounded-xl mb-8">
-          <!-- Kolom 1 -->
-          <div class="flex flex-col gap-2">
-            <!-- Gambar 1 -->
-            <div class="relative group aspect-[4/3] overflow-hidden">
-              <img src="assets/1.jpg" alt="Upacara Santri"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-            <!-- Gambar 4 -->
-            <div class="relative group aspect-[4/3] overflow-hidden">
-              <img src="assets/4.JPG" alt="Belajar Malam"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-          </div>
-
-          <!-- Kolom 2 -->
-          <div class="flex flex-col gap-2">
-            <!-- Gambar 2 (portrait) -->
-            <div class="relative group aspect-[3/4] overflow-hidden">
-              <img src="assets/5.JPG" alt="Kegiatan Santri Putri"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-            <!-- Gambar 5 (landscape) -->
-            <div class="relative group aspect-[4/3] overflow-hidden">
-              <img src="assets/2.JPG" alt="Belajar di Kelas"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-          </div>
-
-          <!-- Kolom 3 -->
-          <div class="flex flex-col gap-2">
-            <!-- Gambar 3 -->
-            <div class="relative group aspect-[4/3] overflow-hidden">
-              <img src="assets/3.JPG" alt="Menulis Pelajaran"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-            <!-- Gambar 6 -->
-            <div class="relative group aspect-[4/3] overflow-hidden">
-              <img src="assets/6.jpg" alt="Ngaji Bersama"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
+        <!-- News Grid -->
+        <div id="preview-news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <!-- News items will be injected here by JS -->
+          <div class="col-span-full text-center text-gray-500">
+            <p>Memuat berita...</p>
           </div>
         </div>
 
         <script>
-          // Shuffle otomatis urutan gambar (hanya untuk galeri, bukan card)
-          const galleryGrid = document.getElementById("gallery-grid");
-          if (galleryGrid) {
-            const galleryColumns = galleryGrid.querySelectorAll("> div");
-            galleryColumns.forEach(column => {
-              const items = Array.from(column.children);
-              const shuffled = items.sort(() => Math.random() - 0.5);
-              shuffled.forEach(item => column.appendChild(item));
-            });
-          }
+          document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('preview-news-container');
+            let newsData = [];
+            const storedData = localStorage.getItem('newsData');
+
+            if (storedData) {
+              newsData = JSON.parse(storedData);
+            } else {
+              const defaultNews = [
+                {
+                  id: 1,
+                  title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
+                  date: "2025-01-15",
+                  image: "assets/1.jpg",
+                  content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
+                },
+                {
+                  id: 2,
+                  title: "Kegiatan Bakti Sosial Santri",
+                  date: "2024-12-20",
+                  image: "assets/2.JPG",
+                  content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
+                },
+                {
+                  id: 3,
+                  title: "Prestasi Santri di Tingkat Nasional",
+                  date: "2024-11-10",
+                  image: "assets/3.JPG",
+                  content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
+                }
+              ];
+              newsData = defaultNews;
+              localStorage.setItem('newsData', JSON.stringify(newsData));
+            }
+
+            if (newsData.length === 0) {
+              container.innerHTML = '<div class="col-span-full text-center text-gray-500">Belum ada berita.</div>';
+              return;
+            }
+
+            container.innerHTML = newsData.map((news, index) => `
+                <article data-aos="fade-up" data-aos-delay="` + (index * 100) + `" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="` + news.image + `" alt="` + news.title + `" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
+                        <div class="absolute top-0 right-0 bg-[#C9A24D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                            ` + new Date(news.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + `
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-[#1F2937] mb-3">
+                            ` + news.title + `
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 whitespace-pre-wrap">` + news.content + `</p>
+                    </div>
+                </article>
+            `).join('');
+
+            if (typeof AOS !== 'undefined') {
+              setTimeout(() => AOS.refresh(), 100);
+            }
+          });
         </script>
 
 
-        <!-- Tombol ke Halaman Galeri Lengkap -->
-        <div class="text-center">
-          <a href="Gallery.html"
-            class="inline-block px-8 py-3 bg-[#0F3D2E] hover:bg-[#145A44] text-white font-medium rounded-full shadow-sm hover:shadow transition-all duration-200">
-            <span class="flex items-center justify-center">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
-                </path>
-              </svg>
-              Lihat Galeri Lengkap
-            </span>
-          </a>
-        </div>
       </div>
-      <!-- Wave Separator at bottom of Gallery -->
+      <!-- Wave Separator at bottom of Berita -->
       <div class="wave-separator">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path
@@ -566,14 +568,16 @@
       </div>
 
       <div class="relative max-w-5xl mx-auto px-4">
-        <div class="mb-6">
+        <div class="flex justify-center items-center gap-4 mb-6">
+          <img src="assets/logo du.png" alt="Logo Darul Ulum"
+            class="h-12 w-auto mb-4 transform hover:scale-110 transition-transform duration-300">
           <img src="assets/Asrama1.png" alt="Logo Al-Kautsar"
-            class="h-12 rounded-full w-auto mx-auto mb-4 transform hover:scale-110 transition-transform duration-300">
+            class="h-12 rounded-full w-auto mb-4 transform hover:scale-110 transition-transform duration-300">
         </div>
         <h3 class="text-2xl font-bold mb-2">Asrama IX Al-Kautsar</h3>
 
         <p class="text-base text-white/90 mb-6 max-w-2xl mx-auto">
-          Membentuk generasi Religius, Berjiwa kuat, dan Kreatif.
+          Membentuk generasi Religius, Berakhlak mulia, dan Kreatif.
         </p>
         <div class="w-24 h-0.5 bg-white/30 mx-auto mb-6"></div>
         <p class="text-sm text-white/70">© 2025 Asrama IX Al-Kautsar. All rights reserved.</p>
