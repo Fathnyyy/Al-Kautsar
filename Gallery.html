@@ -240,64 +240,50 @@
       // Initialize AOS
       if (typeof AOS !== 'undefined') AOS.init({ duration: 1000, once: true });
 
-      // Default Data (Mirroring Admin for consistency)
-      const defaultGallery = [
-        { id: 1, url: 'assets/1.jpg', caption: 'Kegiatan' },
-        { id: 2, url: 'assets/4.jpg', caption: 'Kegiatan' },
-        { id: 3, url: 'assets/12.jpg', caption: 'Gedung Sekolah' },
-        { id: 4, url: 'assets/5.jpg', caption: 'Kegiatan' },
-        { id: 5, url: 'assets/2.jpg', caption: 'Kegiatan' },
-        { id: 6, url: 'assets/11.jpg', caption: 'Lab Komputer' },
-        { id: 7, url: 'assets/13.jpg', caption: 'Halaman Sekolah' },
-        { id: 8, url: 'assets/3.jpg', caption: 'Kegiatan' },
-        { id: 9, url: 'assets/6.jpg', caption: 'Karya Siswa' },
-        { id: 10, url: 'assets/10.jpg', caption: 'Kantin Sekolah' },
-        { id: 11, url: 'assets/9.jpg', caption: 'Taman Sekolah' },
-        { id: 12, url: 'assets/8.jpg', caption: 'Gedung Sekolah' }
-      ];
+      async function renderGallery() {
+        try {
+          const response = await fetch('/api/gallery');
+          const galleryItems = await response.json();
+          
+          const columns = document.querySelectorAll("#gallery-grid > div");
 
-      function getGalleryData() {
-        const data = localStorage.getItem('galleryData');
-        if (!data) {
-          localStorage.setItem('galleryData', JSON.stringify(defaultGallery));
-          return defaultGallery;
+          // Clear existing content
+          columns.forEach(col => col.innerHTML = '');
+
+          if (galleryItems.length === 0) {
+            document.getElementById('gallery-grid').innerHTML = '<div class="col-span-full text-center py-20 text-gray-500">Belum ada foto.</div>';
+            return;
+          }
+
+          // Shuffle logic (Only shuffles the photo order)
+          const shuffledItems = [...galleryItems].sort(() => Math.random() - 0.5);
+
+          // Distribute items into columns round-robin
+          shuffledItems.forEach((item, index) => {
+            const columnIndex = index % columns.length;
+
+            const imgContainer = document.createElement('div');
+            // Randomized aspect ratios for visual variety (simulating the original masonry feel)
+            const aspects = ['aspect-[4/3]', 'aspect-[3/4]', 'aspect-[2/3]', 'aspect-[5/3]', 'aspect-square'];
+            const randomAspect = aspects[Math.floor(Math.random() * aspects.length)];
+            const delay = (index % 6) * 100;
+
+            imgContainer.className = `relative group ${randomAspect} overflow-hidden cursor-pointer rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`;
+            imgContainer.setAttribute('data-aos', 'fade-up');
+            imgContainer.setAttribute('data-aos-delay', delay.toString());
+            imgContainer.onclick = () => openLightbox(item.url);
+
+            imgContainer.innerHTML = `
+              <img src="${item.url}" alt="${item.caption}"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            `;
+
+            columns[columnIndex].appendChild(imgContainer);
+          });
+        } catch (err) {
+          console.error('Failed to fetch gallery:', err);
         }
-        return JSON.parse(data);
-      }
-
-      function renderGallery() {
-        const galleryItems = getGalleryData();
-        const columns = document.querySelectorAll("#gallery-grid > div");
-
-        // Clear existing content
-        columns.forEach(col => col.innerHTML = '');
-
-        // Shuffle logic (Only shuffles the photo order)
-        const shuffledItems = [...galleryItems].sort(() => Math.random() - 0.5);
-
-        // Distribute items into columns round-robin
-        shuffledItems.forEach((item, index) => {
-          const columnIndex = index % columns.length;
-
-          const imgContainer = document.createElement('div');
-          // Randomized aspect ratios for visual variety (simulating the original masonry feel)
-          const aspects = ['aspect-[4/3]', 'aspect-[3/4]', 'aspect-[2/3]', 'aspect-[5/3]', 'aspect-square'];
-          const randomAspect = aspects[Math.floor(Math.random() * aspects.length)];
-          const delay = (index % 6) * 100;
-
-          imgContainer.className = `relative group ${randomAspect} overflow-hidden cursor-pointer rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`;
-          imgContainer.setAttribute('data-aos', 'fade-up');
-          imgContainer.setAttribute('data-aos-delay', delay.toString());
-          imgContainer.onclick = () => openLightbox(item.url);
-
-          imgContainer.innerHTML = `
-            <img src="${item.url}" alt="${item.caption}"
-              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          `;
-
-          columns[columnIndex].appendChild(imgContainer);
-        });
       }
 
       renderGallery();

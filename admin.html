@@ -82,11 +82,15 @@
                     class="pb-2 px-4 font-semibold text-gray-400 hover:text-[#0F3D2E] transition-colors">
                     Galeri Foto
                 </button>
+                <button onclick="switchTab('registrations')" id="tab-registrations"
+                    class="pb-2 px-4 font-semibold text-gray-400 hover:text-[#0F3D2E] transition-colors">
+                    Pendaftaran
+                </button>
             </div>
 
             <!-- News Section -->
             <div id="section-news" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Form Add/Edit News -->
+                <!-- ... existing news form and list ... -->
                 <div class="lg:col-span-1">
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 sticky top-6">
                         <h3 class="text-xl font-bold mb-6 text-gray-800 border-b pb-2">
@@ -130,7 +134,6 @@
                     </div>
                 </div>
 
-                <!-- News List -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                         <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
@@ -139,7 +142,6 @@
                                 Berita</span>
                         </div>
                         <div id="admin-news-list" class="divide-y divide-gray-100">
-                            <!-- Items will be injected here -->
                             <div class="p-8 text-center text-gray-500">Belum ada berita.</div>
                         </div>
                     </div>
@@ -148,7 +150,7 @@
 
             <!-- Gallery Section -->
             <div id="section-gallery" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Form Add Photo -->
+                <!-- ... existing gallery form and list ... -->
                 <div class="lg:col-span-1">
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 sticky top-6">
                         <h3 class="text-xl font-bold mb-6 text-gray-800 border-b pb-2">
@@ -178,7 +180,6 @@
                     </div>
                 </div>
 
-                <!-- Photo List -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                         <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
@@ -187,9 +188,36 @@
                                 Foto</span>
                         </div>
                         <div id="admin-gallery-list" class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
-                            <!-- Photos will be injected here -->
                             <div class="col-span-full text-center text-gray-500 py-8">Belum ada foto.</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registrations Section -->
+            <div id="section-registrations" class="hidden">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                        <h3 class="text-xl font-bold text-gray-800">Daftar Pendaftar Santri Baru</h3>
+                        <span id="total-registrations" class="bg-[#0F3D2E] text-white text-xs px-3 py-1 rounded-full">0 Pendaftar</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-gray-50 text-gray-700 text-sm uppercase">
+                                <tr>
+                                    <th class="p-4 border-b">Tanggal Daftar</th>
+                                    <th class="p-4 border-b">Nama Lengkap</th>
+                                    <th class="p-4 border-b">Sekolah Asal</th>
+                                    <th class="p-4 border-b">Kontak Orang Tua</th>
+                                    <th class="p-4 border-b text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-registrations-list" class="text-gray-600 text-sm">
+                                <tr>
+                                    <td colspan="5" class="p-8 text-center text-gray-500">Belum ada pendaftar.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -198,6 +226,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const API_URL = ''; // Same origin
+
             const loginSection = document.getElementById('login-section');
             const dashboardSection = document.getElementById('dashboard-section');
             const loginForm = document.getElementById('login-form');
@@ -217,16 +247,27 @@
                 showDashboard();
             }
 
-            loginForm.addEventListener('submit', (e) => {
+            loginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const u = document.getElementById('username').value;
-                const p = document.getElementById('password').value;
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
 
-                if (u === 'admin' && p === 'admin123') {
-                    localStorage.setItem('adminLoggedIn', 'true');
-                    showDashboard();
-                } else {
-                    document.getElementById('login-error').classList.remove('hidden');
+                try {
+                    const response = await fetch(`${API_URL}/api/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                    });
+                    const data = await response.json();
+
+                    if (data.success) {
+                        localStorage.setItem('adminLoggedIn', 'true');
+                        showDashboard();
+                    } else {
+                        document.getElementById('login-error').classList.remove('hidden');
+                    }
+                } catch (err) {
+                    alert('Gagal menghubungkan ke server!');
                 }
             });
 
@@ -240,102 +281,158 @@
                 dashboardSection.classList.remove('hidden');
                 renderNewsList();
                 renderGalleryList();
+                renderRegistrationsList();
             }
 
             // --- Tab Switching ---
             window.switchTab = function (tabName) {
-                const newsSection = document.getElementById('section-news');
-                const gallerySection = document.getElementById('section-gallery');
-                const tabNews = document.getElementById('tab-news');
-                const tabGallery = document.getElementById('tab-gallery');
+                const sections = {
+                    news: document.getElementById('section-news'),
+                    gallery: document.getElementById('section-gallery'),
+                    registrations: document.getElementById('section-registrations')
+                };
+                const tabs = {
+                    news: document.getElementById('tab-news'),
+                    gallery: document.getElementById('tab-gallery'),
+                    registrations: document.getElementById('tab-registrations')
+                };
 
-                if (tabName === 'news') {
-                    newsSection.classList.remove('hidden');
-                    gallerySection.classList.add('hidden');
-                    tabNews.classList.add('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
-                    tabNews.classList.remove('text-gray-400');
-                    tabGallery.classList.remove('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
-                    tabGallery.classList.add('text-gray-400');
-                } else {
-                    newsSection.classList.add('hidden');
-                    gallerySection.classList.remove('hidden');
-                    tabGallery.classList.add('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
-                    tabGallery.classList.remove('text-gray-400');
-                    tabNews.classList.remove('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
-                    tabNews.classList.add('text-gray-400');
+                // Hide all sections, deactivate all tabs
+                Object.values(sections).forEach(s => s.classList.add('hidden'));
+                Object.values(tabs).forEach(t => {
+                    t.classList.remove('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
+                    t.classList.add('text-gray-400');
+                });
+
+                // Show target section, activate target tab
+                sections[tabName].classList.remove('hidden');
+                tabs[tabName].classList.add('border-b-2', 'border-[#0F3D2E]', 'text-[#0F3D2E]');
+                tabs[tabName].classList.remove('text-gray-400');
+
+                if (tabName === 'registrations') renderRegistrationsList();
+            };
+
+
+            // --- REGISTRATIONS ---
+            async function renderRegistrationsList() {
+                const list = document.getElementById('admin-registrations-list');
+                try {
+                    const response = await fetch(`${API_URL}/api/registrations`);
+                    const data = await response.json();
+                    
+                    document.getElementById('total-registrations').textContent = `${data.length} Pendaftar`;
+
+                    if (data.length === 0) {
+                        list.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-gray-500">Belum ada pendaftar.</td></tr>';
+                        return;
+                    }
+
+                    list.innerHTML = data.map(item => `
+                        <tr class="hover:bg-gray-50 border-b border-gray-100">
+                            <td class="p-4 text-xs">
+                                ${new Date(item.registrationDate).toLocaleString('id-ID')}
+                            </td>
+                            <td class="p-4">
+                                <div class="font-bold text-gray-800">${item.namaLengkap}</div>
+                                <div class="text-xs text-gray-400">${item.jenisKelamin}, ${item.tempatLahir}</div>
+                            </td>
+                            <td class="p-4 text-gray-500">${item.asalSekolah}</td>
+                            <td class="p-4">
+                                <div class="text-gray-700">${item.noTelepon}</div>
+                                <div class="text-xs text-blue-500">${item.email}</div>
+                            </td>
+                            <td class="p-4 text-center">
+                                <div class="flex justify-center gap-2">
+                                    <button onclick="viewDetails(${item.id})" class="text-blue-600 hover:text-blue-800 p-2" title="Lihat Detail">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button onclick="deleteRegistration(${item.id})" class="text-red-600 hover:text-red-800 p-2" title="Hapus">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('');
+                } catch (err) {
+                    list.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-red-500">Gagal mengambil data.</td></tr>';
+                }
+            }
+
+            window.deleteRegistration = async function(id) {
+                if (confirm('Hapus data pendaftaran ini?')) {
+                    try {
+                        const response = await fetch(`${API_URL}/api/registrations/${id}`, { method: 'DELETE' });
+                        if (response.ok) renderRegistrationsList();
+                    } catch (err) {
+                        alert('Gagal menghapus data!');
+                    }
+                }
+            };
+
+            window.viewDetails = async function(id) {
+                try {
+                    const response = await fetch(`${API_URL}/api/registrations`);
+                    const data = await response.json();
+                    const item = data.find(r => r.id == id);
+                    if (item) {
+                        alert(`
+                            DETAIL PENDAFTAR:
+                            Nama: ${item.namaLengkap}
+                            L/P: ${item.jenisKelamin}
+                            TTL: ${item.tempatLahir}, ${item.tanggalLahir}
+                            Alamat: ${item.alamat}
+                            Asal Sekolah: ${item.asalSekolah}
+                            
+                            DATA ORANG TUA:
+                            Ayah: ${item.namaAyah} (${item.pekerjaanAyah})
+                            Ibu: ${item.namaIbu} (${item.pekerjaanIbu})
+                            No. HP: ${item.noTelepon}
+                            Email: ${item.email}
+                        `);
+                    }
+                } catch (err) {
+                    alert('Gagal mengambil detail!');
                 }
             };
 
 
             // --- NEWS CRUD ---
-            const defaultNews = [
-                {
-                    id: 1,
-                    title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
-                    date: "2025-01-15",
-                    image: "assets/1.jpg",
-                    content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
-                },
-                {
-                    id: 2,
-                    title: "Kegiatan Bakti Sosial Santri",
-                    date: "2024-12-20",
-                    image: "assets/2.JPG",
-                    content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
-                },
-                {
-                    id: 3,
-                    title: "Prestasi Santri di Tingkat Nasional",
-                    date: "2024-11-10",
-                    image: "assets/3.JPG",
-                    content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
-                }
-            ];
+            async function renderNewsList() {
+                try {
+                    const response = await fetch(`${API_URL}/api/news`);
+                    const news = await response.json();
+                    
+                    document.getElementById('total-news').textContent = `${news.length} Berita`;
 
-            function getNews() {
-                const data = localStorage.getItem('newsData');
-                if (!data) {
-                    localStorage.setItem('newsData', JSON.stringify(defaultNews));
-                    return defaultNews;
-                }
-                return JSON.parse(data);
-            }
+                    if (news.length === 0) {
+                        newsList.innerHTML = '<div class="p-8 text-center text-gray-500">Belum ada berita.</div>';
+                        return;
+                    }
 
-            function saveNews(news) {
-                localStorage.setItem('newsData', JSON.stringify(news));
-                renderNewsList();
-            }
-
-            function renderNewsList() {
-                const news = getNews();
-                document.getElementById('total-news').textContent = `${news.length} Berita`;
-
-                if (news.length === 0) {
-                    newsList.innerHTML = '<div class="p-8 text-center text-gray-500">Belum ada berita.</div>';
-                    return;
-                }
-
-                newsList.innerHTML = news.map(item => `
-                    <div class="p-4 hover:bg-gray-50 transition flex flex-col sm:flex-row gap-4">
-                        <img src="${item.image}" class="w-24 h-24 object-cover rounded-lg bg-gray-200 flex-shrink-0">
-                        <div class="flex-grow">
-                            <h4 class="font-bold text-gray-800 mb-1">${item.title}</h4>
-                            <p class="text-xs text-gray-500 mb-2">${item.date}</p>
-                            <p class="text-sm text-gray-600 line-clamp-2">${item.content}</p>
+                    newsList.innerHTML = news.map(item => `
+                        <div class="p-4 hover:bg-gray-50 transition flex flex-col sm:flex-row gap-4">
+                            <img src="${item.image}" class="w-24 h-24 object-cover rounded-lg bg-gray-200 flex-shrink-0">
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-gray-800 mb-1">${item.title}</h4>
+                                <p class="text-xs text-gray-500 mb-2">${item.date}</p>
+                                <p class="text-sm text-gray-600 line-clamp-2">${item.content}</p>
+                            </div>
+                            <div class="flex sm:flex-col gap-2 justify-center">
+                                <button onclick="editNews(${item.id})" class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="deleteNews(${item.id})" class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="flex sm:flex-col gap-2 justify-center">
-                            <button onclick="editNews(${item.id})" class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button onclick="deleteNews(${item.id})" class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
+                    `).join('');
+                } catch (err) {
+                    newsList.innerHTML = '<div class="p-8 text-center text-red-500">Gagal mengambil data berita.</div>';
+                }
             }
 
-            newsForm.addEventListener('submit', (e) => {
+            newsForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const id = document.getElementById('news-id').value;
                 const title = document.getElementById('news-title').value;
@@ -343,23 +440,21 @@
                 const image = document.getElementById('news-image').value;
                 const content = document.getElementById('news-content').value;
 
-                let news = getNews();
-
-                if (id) {
-                    // Update
-                    const index = news.findIndex(n => n.id == id);
-                    if (index !== -1) {
-                        news[index] = { ...news[index], title, date, image, content };
+                try {
+                    const response = await fetch(`${API_URL}/api/news`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id, title, date, image, content })
+                    });
+                    
+                    if (response.ok) {
+                        renderNewsList();
+                        resetForm();
+                        alert('Berita berhasil disimpan!');
                     }
-                } else {
-                    // Create
-                    const newId = news.length > 0 ? Math.max(...news.map(n => n.id)) + 1 : 1;
-                    news.unshift({ id: newId, title, date, image, content });
+                } catch (err) {
+                    alert('Gagal menyimpan berita!');
                 }
-
-                saveNews(news);
-                resetForm();
-                alert('Berita berhasil disimpan!');
             });
 
             resetBtn.addEventListener('click', resetForm);
@@ -370,103 +465,100 @@
                 document.getElementById('form-title').textContent = 'Tambah Berita';
             }
 
-            window.editNews = function (id) {
-                const news = getNews();
-                const item = news.find(n => n.id == id);
-                if (item) {
-                    document.getElementById('news-id').value = item.id;
-                    document.getElementById('news-title').value = item.title;
-                    document.getElementById('news-date').value = item.date;
-                    document.getElementById('news-image').value = item.image;
-                    document.getElementById('news-content').value = item.content;
-                    document.getElementById('form-title').textContent = 'Edit Berita';
-                    // Switch to existing tab if needed, though this edit function assumes we are on news tab
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.editNews = async function (id) {
+                try {
+                    const response = await fetch(`${API_URL}/api/news`);
+                    const news = await response.json();
+                    const item = news.find(n => n.id == id);
+                    if (item) {
+                        document.getElementById('news-id').value = item.id;
+                        document.getElementById('news-title').value = item.title;
+                        document.getElementById('news-date').value = item.date;
+                        document.getElementById('news-image').value = item.image;
+                        document.getElementById('news-content').value = item.content;
+                        document.getElementById('form-title').textContent = 'Edit Berita';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                } catch (err) {
+                    alert('Gagal mengambil data berita!');
                 }
             };
 
-            window.deleteNews = function (id) {
+            window.deleteNews = async function (id) {
                 if (confirm('Apakah Anda yakin ingin menghapus berita ini?')) {
-                    let news = getNews();
-                    news = news.filter(n => n.id != id);
-                    saveNews(news);
+                    try {
+                        const response = await fetch(`${API_URL}/api/news/${id}`, { method: 'DELETE' });
+                        if (response.ok) {
+                            renderNewsList();
+                        }
+                    } catch (err) {
+                        alert('Gagal menghapus berita!');
+                    }
                 }
             };
 
 
             // --- GALLERY CRUD ---
-            // Default images from original Gallery.html
-            const defaultGallery = [
-                { id: 1, url: 'assets/1.jpg', caption: 'Kegiatan' },
-                { id: 2, url: 'assets/4.jpg', caption: 'Kegiatan' },
-                { id: 3, url: 'assets/12.jpg', caption: 'Gedung Sekolah' },
-                { id: 4, url: 'assets/5.jpg', caption: 'Kegiatan' },
-                { id: 5, url: 'assets/2.jpg', caption: 'Kegiatan' },
-                { id: 6, url: 'assets/11.jpg', caption: 'Lab Komputer' },
-                { id: 7, url: 'assets/13.jpg', caption: 'Halaman Sekolah' },
-                { id: 8, url: 'assets/3.jpg', caption: 'Kegiatan' },
-                { id: 9, url: 'assets/6.jpg', caption: 'Karya Siswa' },
-                { id: 10, url: 'assets/10.jpg', caption: 'Kantin Sekolah' },
-                { id: 11, url: 'assets/9.jpg', caption: 'Taman Sekolah' },
-                { id: 12, url: 'assets/8.jpg', caption: 'Gedung Sekolah' }
-            ];
+            async function renderGalleryList() {
+                try {
+                    const response = await fetch(`${API_URL}/api/gallery`);
+                    const items = await response.json();
+                    
+                    document.getElementById('total-gallery').textContent = `${items.length} Foto`;
 
-            function getGallery() {
-                const data = localStorage.getItem('galleryData');
-                if (!data) {
-                    localStorage.setItem('galleryData', JSON.stringify(defaultGallery));
-                    return defaultGallery;
-                }
-                return JSON.parse(data);
-            }
+                    if (items.length === 0) {
+                        galleryList.innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">Belum ada foto.</div>';
+                        return;
+                    }
 
-            function saveGallery(items) {
-                localStorage.setItem('galleryData', JSON.stringify(items));
-                renderGalleryList();
-            }
-
-            function renderGalleryList() {
-                const items = getGallery();
-                document.getElementById('total-gallery').textContent = `${items.length} Foto`;
-
-                if (items.length === 0) {
-                    galleryList.innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">Belum ada foto.</div>';
-                    return;
-                }
-
-                galleryList.innerHTML = items.map(item => `
-                    <div class="relative group rounded-lg overflow-hidden border border-gray-200">
-                        <img src="${item.url}" alt="${item.caption}" class="w-full h-32 object-cover">
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <button onclick="deletePhoto(${item.id})" class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                    galleryList.innerHTML = items.map(item => `
+                        <div class="relative group rounded-lg overflow-hidden border border-gray-200">
+                            <img src="${item.url}" alt="${item.caption}" class="w-full h-32 object-cover">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button onclick="deletePhoto(${item.id})" class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <div class="p-2 bg-white text-xs text-gray-600 truncate">${item.caption}</div>
                         </div>
-                        <div class="p-2 bg-white text-xs text-gray-600 truncate">${item.caption}</div>
-                    </div>
-                `).join('');
+                    `).join('');
+                } catch (err) {
+                    galleryList.innerHTML = '<div class="col-span-full text-center text-red-500 py-8">Gagal mengambil data galeri.</div>';
+                }
             }
 
-            galleryForm.addEventListener('submit', (e) => {
+            galleryForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const url = document.getElementById('gallery-image').value;
                 const caption = document.getElementById('gallery-caption').value;
 
-                let items = getGallery();
-                const newId = items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1;
-
-                items.unshift({ id: newId, url, caption });
-                saveGallery(items);
-
-                galleryForm.reset();
-                alert('Foto berhasil ditambahkan!');
+                try {
+                    const response = await fetch(`${API_URL}/api/gallery`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ url, caption })
+                    });
+                    
+                    if (response.ok) {
+                        renderGalleryList();
+                        galleryForm.reset();
+                        alert('Foto berhasil ditambahkan!');
+                    }
+                } catch (err) {
+                    alert('Gagal menambahkan foto!');
+                }
             });
 
-            window.deletePhoto = function (id) {
+            window.deletePhoto = async function (id) {
                 if (confirm('Hapus foto ini dari galeri?')) {
-                    let items = getGallery();
-                    items = items.filter(i => i.id != id);
-                    saveGallery(items);
+                    try {
+                        const response = await fetch(`${API_URL}/api/gallery/${id}`, { method: 'DELETE' });
+                        if (response.ok) {
+                            renderGalleryList();
+                        }
+                    } catch (err) {
+                        alert('Gagal menghapus foto!');
+                    }
                 }
             };
 
