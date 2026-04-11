@@ -376,64 +376,46 @@
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('preview-news-container');
-            let newsData = [];
-            const storedData = localStorage.getItem('newsData');
+            
+            async function fetchPreviewNews() {
+              try {
+                const response = await fetch('/api/news');
+                const newsData = await response.json();
 
-            if (storedData) {
-              newsData = JSON.parse(storedData);
-            } else {
-              const defaultNews = [
-                {
-                  id: 1,
-                  title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
-                  date: "2025-01-15",
-                  image: "assets/1.jpg",
-                  content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
-                },
-                {
-                  id: 2,
-                  title: "Kegiatan Bakti Sosial Santri",
-                  date: "2024-12-20",
-                  image: "assets/2.JPG",
-                  content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
-                },
-                {
-                  id: 3,
-                  title: "Prestasi Santri di Tingkat Nasional",
-                  date: "2024-11-10",
-                  image: "assets/3.JPG",
-                  content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
+                if (newsData.length === 0) {
+                  container.innerHTML = '<div class="col-span-full text-center text-gray-500">Belum ada berita.</div>';
+                  return;
                 }
-              ];
-              newsData = defaultNews;
-              localStorage.setItem('newsData', JSON.stringify(newsData));
-            }
 
-            if (newsData.length === 0) {
-              container.innerHTML = '<div class="col-span-full text-center text-gray-500">Belum ada berita.</div>';
-              return;
-            }
+                // Show only top 3 news
+                const previewNews = newsData.slice(0, 3);
 
-            container.innerHTML = newsData.map((news, index) => `
-                <article data-aos="fade-up" data-aos-delay="` + (index * 100) + `" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full border border-gray-100">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="` + news.image + `" alt="` + news.title + `" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
-                        <div class="absolute top-0 right-0 bg-[#C9A24D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                            ` + new Date(news.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + `
+                container.innerHTML = previewNews.map((news, index) => `
+                    <article data-aos="fade-up" data-aos-delay="${index * 100}" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full border border-gray-100">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
+                            <div class="absolute top-0 right-0 bg-[#C9A24D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                                ${new Date(news.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-[#1F2937] mb-3">
-                            ` + news.title + `
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4 whitespace-pre-wrap">` + news.content + `</p>
-                    </div>
-                </article>
-            `).join('');
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-[#1F2937] mb-3">
+                                ${news.title}
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 whitespace-pre-wrap">${news.content}</p>
+                        </div>
+                    </article>
+                `).join('');
 
-            if (typeof AOS !== 'undefined') {
-              setTimeout(() => AOS.refresh(), 100);
+                if (typeof AOS !== 'undefined') {
+                  setTimeout(() => AOS.refresh(), 100);
+                }
+              } catch (err) {
+                container.innerHTML = '<div class="col-span-full text-center text-red-500">Gagal memuat berita.</div>';
+              }
             }
+
+            fetchPreviewNews();
           });
         </script>
 
