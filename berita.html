@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="stylesheet.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <title>Al-Kautsar - Berita Terkinigit pull origin main</title>
+
+    <title>Al-Kautsar - Berita Terkini</title>
+
 </head>
 
 <body class="bg-gray-50 flex flex-col min-h-screen">
@@ -298,67 +300,41 @@
 
             const container = document.getElementById('news-container');
 
-            // Get news data from localStorage
-            let newsData = [];
-            const storedData = localStorage.getItem('newsData');
+            async function fetchNews() {
+                try {
+                    const response = await fetch('/api/news');
+                    const newsData = await response.json();
 
-            if (storedData) {
-                // If data exists in localStorage, use it
-                newsData = JSON.parse(storedData);
-            } else {
-                // Only set default news on FIRST VISIT (when localStorage is null)
-                // This prevents resetting when admin deletes all news
-                const defaultNews = [
-                    {
-                        id: 1,
-                        title: "Penerimaan Santri Baru Tahun Ajaran 2025/2026",
-                        date: "2025-01-15",
-                        image: "assets/1.jpg",
-                        content: "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"
-                    },
-                    {
-                        id: 2,
-                        title: "Kegiatan Bakti Sosial Santri",
-                        date: "2024-12-20",
-                        image: "assets/2.JPG",
-                        content: "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."
-                    },
-                    {
-                        id: 3,
-                        title: "Prestasi Santri di Tingkat Nasional",
-                        date: "2024-11-10",
-                        image: "assets/3.JPG",
-                        content: "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."
+                    if (newsData.length === 0) {
+                        container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500">Belum ada berita.</div>';
+                        return;
                     }
-                ];
-                newsData = defaultNews;
-                localStorage.setItem('newsData', JSON.stringify(newsData));
+
+                    container.innerHTML = newsData.map((news, index) => `
+                        <article data-aos="fade-up" data-aos-delay="${index * 100}" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full border border-gray-100">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
+                                <div class="absolute top-0 right-0 bg-[#C9A24D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                                    ${new Date(news.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold text-[#1F2937] mb-3">
+                                    ${news.title}
+                                </h3>
+                                <p class="text-gray-600 text-sm mb-4 whitespace-pre-wrap">${news.content}</p>
+                            </div>
+                        </article>
+                    `).join('');
+
+                    // Re-init AOS
+                    if (typeof AOS !== 'undefined') AOS.init();
+                } catch (err) {
+                    container.innerHTML = '<div class="col-span-full text-center py-20 text-red-500">Gagal memuat berita.</div>';
+                }
             }
 
-            if (newsData.length === 0) {
-                container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500">Belum ada berita.</div>';
-                return;
-            }
-
-            container.innerHTML = newsData.map((news, index) => `
-                <article data-aos="fade-up" data-aos-delay="${index * 100}" class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full border border-gray-100">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
-                        <div class="absolute top-0 right-0 bg-[#C9A24D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                            ${new Date(news.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
-                        </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-[#1F2937] mb-3">
-                            ${news.title}
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4 whitespace-pre-wrap">${news.content}</p>
-                    </div>
-                </article>
-            `).join('');
-
-            // Re-init AOS if needed
-            if (typeof AOS !== 'undefined') AOS.init();
+            fetchNews();
         });
 
 

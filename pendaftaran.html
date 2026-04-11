@@ -471,7 +471,7 @@
 
             // Form submission handler
             const form = document.getElementById('registrationForm');
-            form.addEventListener('submit', function (e) {
+            form.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
                 // Get form data
@@ -481,38 +481,49 @@
                     data[key] = value;
                 });
 
-                // Show success message
-                const successMessage = document.createElement('div');
-                successMessage.className = 'fixed top-24 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-xl z-50 transform transition-all duration-300';
-                successMessage.innerHTML = `
-          <div class="flex items-center gap-3">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            <div>
-              <p class="font-semibold">Pendaftaran Berhasil!</p>
-              <p class="text-sm">Tim kami akan segera menghubungi Anda</p>
-            </div>
-          </div>
-        `;
-                document.body.appendChild(successMessage);
+                try {
+                    const response = await fetch('/api/registrations', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
 
-                // Log data to console (in production, this would be sent to a server)
-                console.log('Form Data:', data);
+                    if (response.ok) {
+                        // Show success message
+                        const successMessage = document.createElement('div');
+                        successMessage.className = 'fixed top-24 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-xl z-50 transform transition-all duration-300';
+                        successMessage.innerHTML = `
+                  <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                      <p class="font-semibold">Pendaftaran Berhasil!</p>
+                      <p class="text-sm">Tim kami akan segera menghubungi Anda</p>
+                    </div>
+                  </div>
+                `;
+                        document.body.appendChild(successMessage);
 
-                // Remove message after 5 seconds
-                setTimeout(() => {
-                    successMessage.style.opacity = '0';
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 300);
-                }, 5000);
+                        // Remove message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.style.opacity = '0';
+                            setTimeout(() => {
+                                successMessage.remove();
+                            }, 300);
+                        }, 5000);
 
-                // Reset form
-                form.reset();
+                        // Reset form
+                        form.reset();
 
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        alert('Gagal mengirim pendaftaran. Silakan coba lagi.');
+                    }
+                } catch (err) {
+                    alert('Gagal menghubungkan ke server!');
+                }
             });
         });
     </script>
