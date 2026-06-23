@@ -5,7 +5,7 @@ Website resmi Al-Kautsar - Lembaga Pendidikan Islam Terpadu dengan navbar animas
 ## 📁 Struktur File
 
 ```
-├── Index.html          # File HTML utama
+├── index.html          # File HTML utama
 ├── stylesheet.css      # File CSS untuk semua animasi navbar
 ├── script.js          # File JavaScript untuk interaksi navbar
 ├── assets/            # Folder untuk gambar dan assets
@@ -46,9 +46,9 @@ Website resmi Al-Kautsar - Lembaga Pendidikan Islam Terpadu dengan navbar animas
 
 ## 🚀 Cara Menjalankan
 
-1. Buka file `Index.html` di browser
+1. Buka file `index.html` di browser
 2. Pastikan semua file berada di folder yang sama:
-   - `Index.html`
+   - `index.html`
    - `stylesheet.css`
    - `script.js`
    - Folder `assets/` dengan gambar
