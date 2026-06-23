@@ -62,8 +62,8 @@ async function initDatabase() {
         if (newsCount.rows[0].count === 0) {
             const defaultNews = [
                 ["Penerimaan Santri Baru Tahun Ajaran 2025/2026", "2025-01-15", "assets/1.jpg", "Asrama Al-Kautsar kembali membuka pendaftaran bagi calon santri baru. Daftarkan diri Anda segera!"],
-                ["Kegiatan Bakti Sosial Santri", "2024-12-20", "assets/2.JPG", "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."],
-                ["Prestasi Santri di Tingkat Nasional", "2024-11-10", "assets/3.JPG", "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."]
+                ["Kegiatan Bakti Sosial Santri", "2024-12-20", "assets/2.jpg", "Para santri melakukan kegiatan bakti sosial di desa sekitar asrama sebagai bentuk pengabdian masyarakat."],
+                ["Prestasi Santri di Tingkat Nasional", "2024-11-10", "assets/3.jpg", "Selamat kepada santri Al-Kautsar yang berhasil meraih juara dalam lomba pidato bahasa Arab tingkat nasional."]
             ];
             for (const item of defaultNews) {
                 await db.execute({
