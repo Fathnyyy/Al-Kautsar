@@ -109,11 +109,11 @@
                                     class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">URL Gambar</label>
-                                <input type="text" id="news-image" required
-                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none"
-                                    placeholder="https://...">
-                                <p class="text-xs text-gray-500 mt-1">Gunakan URL gambar valid</p>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Upload Gambar</label>
+                                <input type="file" id="news-image" accept="image/*"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none">
+                                <p class="text-xs text-gray-500 mt-1">Upload gambar untuk berita ini</p>
+                                <input type="hidden" id="existing-news-image">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Isi Berita</label>
@@ -158,10 +158,9 @@
                         </h3>
                         <form id="gallery-form" class="space-y-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">URL Foto</label>
-                                <input type="text" id="gallery-image" required
-                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none"
-                                    placeholder="https://... atau assets/...">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Upload Foto</label>
+                                <input type="file" id="gallery-image" accept="image/*" required
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F3D2E] focus:border-transparent outline-none">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (Alt
@@ -437,14 +436,33 @@
                 const id = document.getElementById('news-id').value;
                 const title = document.getElementById('news-title').value;
                 const date = document.getElementById('news-date').value;
-                const image = document.getElementById('news-image').value;
                 const content = document.getElementById('news-content').value;
+                const imageFile = document.getElementById('news-image').files[0];
+                let image = document.getElementById('existing-news-image').value;
 
                 try {
+                    let finalImage = image;
+
+                    // Compute Base64 if a new file is provided
+                    if (imageFile) {
+                        const base64Image = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(imageFile);
+                            reader.onload = () => resolve(reader.result);
+                            reader.onerror = error => reject(error);
+                        });
+                        finalImage = base64Image;
+                    }
+
+                    if (!id && !finalImage) {
+                        alert('Silakan upload gambar untuk berita ini!');
+                        return;
+                    }
+
                     const response = await fetch(`${API_URL}/api/news`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ id, title, date, image, content })
+                        body: JSON.stringify({ id, title, date, image: finalImage, content })
                     });
                     
                     if (response.ok) {
@@ -462,6 +480,7 @@
             function resetForm() {
                 newsForm.reset();
                 document.getElementById('news-id').value = '';
+                document.getElementById('existing-news-image').value = '';
                 document.getElementById('form-title').textContent = 'Tambah Berita';
             }
 
@@ -474,7 +493,8 @@
                         document.getElementById('news-id').value = item.id;
                         document.getElementById('news-title').value = item.title;
                         document.getElementById('news-date').value = item.date;
-                        document.getElementById('news-image').value = item.image;
+                        document.getElementById('existing-news-image').value = item.image;
+                        document.getElementById('news-image').value = '';
                         document.getElementById('news-content').value = item.content;
                         document.getElementById('form-title').textContent = 'Edit Berita';
                         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -529,10 +549,24 @@
 
             galleryForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const url = document.getElementById('gallery-image').value;
+                const imageFile = document.getElementById('gallery-image').files[0];
                 const caption = document.getElementById('gallery-caption').value;
 
+                if (!imageFile) {
+                    alert('Silakan pilih foto terlebih dahulu!');
+                    return;
+                }
+
                 try {
+                    const base64Image = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(imageFile);
+                        reader.onload = () => resolve(reader.result);
+                        reader.onerror = error => reject(error);
+                    });
+
+                    const url = base64Image;
+
                     const response = await fetch(`${API_URL}/api/gallery`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
